@@ -12,8 +12,7 @@ Users will be able to create new projects to be planned. Each project will be se
 
 ### Backend
 
-* Django
-* Django Rest Framework
+* Flask
 
 ### Database
 
