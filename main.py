@@ -5,9 +5,6 @@ from datetime import datetime
 from ProjectModel import Project, project_Schema, projects_Schema 
 from config import db, app
 
-@app.route('/', methods=['GET'])
-def home():
-    return {'data': 'hello world'}
 
 @app.route('/project', methods=['POST'])
 def addProject():
