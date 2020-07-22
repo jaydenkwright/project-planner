@@ -1,8 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
 from datetime import datetime
-from main import db, marsh
+
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,3 +37,6 @@ class ProjectSchema(marsh.Schema):
         'figma',
         'privacy',
         'date')
+
+project_Schema = ProjectSchema()
+projects_Schema = ProjectSchema(many=True)
