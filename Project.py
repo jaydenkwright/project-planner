@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from datetime import datetime
-from main import db
+from main import db, marsh
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,3 +25,16 @@ class Project(db.Model):
         self.github = github
         self.figma = figma
         self.privacy = privacy
+
+class ProjectSchema(marsh.Schema):
+    class Meta:
+        fields = ('id', 
+        'userId', 
+        'name', 
+        'description', 
+        'category', 
+        'dueDate',
+        'github',
+        'figma',
+        'privacy',
+        'date')
