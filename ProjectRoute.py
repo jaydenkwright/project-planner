@@ -20,12 +20,19 @@ def addProject():
 
     return project_Schema.jsonify(project)
 
+# Get all projects created by a certain user
+@app.route('/projects/<userId>', methods=['GET'])
+def getUserProjects(userId):
+    projects = Project.query.filter(Project.userId == userId).all()
+    return projects_Schema.jsonify(projects)
+
 # Get a specific project with a given id
 @app.route('/project/<id>', methods=['GET'])
 def getProject(id):
     project = Project.query.get(id)
     return project_Schema.jsonify(project)
 
+# Update a project
 @app.route('/project/<id>', methods=['PUT'])
 def updateProject(id):
     project = Project.query.get(id)
@@ -47,6 +54,15 @@ def updateProject(id):
     project.figma = figma
     project.privacy = privacy
 
+    db.session.commit()
+
+    return project_Schema.jsonify(project)
+
+# Delete a project
+@app.route('/project/<id>', methods=['DELETE'])
+def deleteProject(id):
+    project = Project.query.get(id)
+    db.session.delete(project)
     db.session.commit()
 
     return project_Schema.jsonify(project)
