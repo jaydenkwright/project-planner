@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from ProjectModel import Project, project_Schema, projects_Schema 
 from config import db, app
 
+# Create new project
 @app.route('/project', methods=['POST'])
 def addProject():
     userId = request.json['userId']
@@ -17,4 +18,10 @@ def addProject():
     db.session.add(project)
     db.session.commit()
 
+    return project_Schema.jsonify(project)
+
+# Get a specific project with a given id
+@app.route('/project/<id>', methods=['GET'])
+def getProject(id):
+    project = Project.query.get(id)
     return project_Schema.jsonify(project)
