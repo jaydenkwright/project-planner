@@ -1,6 +1,5 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from config import db, marsh
 
 
 class Project(db.Model):
@@ -15,7 +14,7 @@ class Project(db.Model):
     privacy = db.Column(db.Boolean())
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, id, name, description, category, dueDate, github, figma, privacy):
+    def __init__(self, userId, name, description, category, dueDate, github, figma, privacy):
         self.userId = userId
         self.name = name 
         self.description = description
