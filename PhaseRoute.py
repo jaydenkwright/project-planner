@@ -3,7 +3,7 @@ from PhaseModel import Phase, phase_schema, phases_schema
 from config import db, app
 
 # Create new phase
-@app.route('/phase', methods=['POST'])
+@app.route('/phase/add', methods=['POST'])
 def addPhase():
     userId = request.json['userId']
     projectId = request.json['projectId']
@@ -32,7 +32,7 @@ def getUserPhases(userId):
     phase = Phase.query.filter(Phase.userId == userId).all()
     return phases_schema.jsonify(phase)
 
-@app.route('/phase/<id>', methods=['PUT'])
+@app.route('/phase/update/<id>', methods=['PUT'])
 def updatePhase(id):
     phase = Phase.query.get(id)
     userId = request.json['userId']
@@ -54,4 +54,12 @@ def updatePhase(id):
     phase.completed = completed
 
     db.session.commit()
+    return phase_schema.jsonify(phase)
+
+@app.route('/phase/delete/<id>', methods=['DELETE'])
+def deletePhase(id):
+    phase = Phase.query.get(id)
+    db.session.delete(phase)
+    db.session.commit()
+
     return phase_schema.jsonify(phase)
