@@ -1,10 +1,13 @@
-from flask import Flask, request, jsonify
-from ProjectModel import Project, project_Schema, projects_Schema 
+from flask import Flask, request, jsonify, make_response
+from ProjectModel import Project, project_Schema, projects_Schema
+from verify import verify
 from config import db, app
+
 
 # Create new project
 @app.route('/project/add', methods=['POST'])
-def addProject():
+@verify
+def addProject(user):
     userId = request.json['userId']
     name = request.json['name']
     description = request.json['description']
@@ -22,7 +25,8 @@ def addProject():
 
 # Get all projects created by a certain user
 @app.route('/projects/<userId>', methods=['GET'])
-def getUserProjects(userId):
+@verify
+def getUserProjects(user, userId):
     projects = Project.query.filter(Project.userId == userId).all()
     return projects_Schema.jsonify(projects)
 
@@ -34,7 +38,8 @@ def getProject(id):
 
 # Update a project
 @app.route('/project/update/<id>', methods=['PUT'])
-def updateProject(id):
+@verify
+def updateProject(user, id):
     project = Project.query.get(id)
     userId = request.json['userId']
     name = request.json['name']
@@ -60,7 +65,8 @@ def updateProject(id):
 
 # Delete a project
 @app.route('/project/delete/<id>', methods=['DELETE'])
-def deleteProject(id):
+@verify
+def deleteProject(user, id):
     project = Project.query.get(id)
     db.session.delete(project)
     db.session.commit()

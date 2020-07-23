@@ -36,7 +36,7 @@ def login():
 
     if check_password_hash(user.password, password):
         token = jwt.encode({'userId': user.userId, 
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(days=30)},
         app.config['SECRET_KEY']
         )
         resp = make_response('')

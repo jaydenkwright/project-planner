@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
-from PhaseModel import Phase, phase_schema, phases_schema 
+from PhaseModel import Phase, phase_schema, phases_schema
+from verify import verify
 from config import db, app
 
 # Create new phase
 @app.route('/phase/add', methods=['POST'])
-def addPhase():
+@verify
+def addPhase(user):
     userId = request.json['userId']
     projectId = request.json['projectId']
     phaseNumber = request.json['phaseNumber']
@@ -28,12 +30,14 @@ def getPhase(id):
 
 # Get all phases from certain user
 @app.route('/phases/<userId>', methods=['GET'])
-def getUserPhases(userId):
+@verify
+def getUserPhases(user, userId):
     phase = Phase.query.filter(Phase.userId == userId).all()
     return phases_schema.jsonify(phase)
 
 @app.route('/phase/update/<id>', methods=['PUT'])
-def updatePhase(id):
+@verify
+def updatePhase(user, id):
     phase = Phase.query.get(id)
     userId = request.json['userId']
     projectId = request.json['projectId']
@@ -57,7 +61,8 @@ def updatePhase(id):
     return phase_schema.jsonify(phase)
 
 @app.route('/phase/delete/<id>', methods=['DELETE'])
-def deletePhase(id):
+@verify
+def deletePhase(user, id):
     phase = Phase.query.get(id)
     db.session.delete(phase)
     db.session.commit()

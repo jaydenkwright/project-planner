@@ -6,5 +6,6 @@ from settings.settings import DATABASE
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'secret'
 db = SQLAlchemy(app)
 marsh = Marshmallow(app)
