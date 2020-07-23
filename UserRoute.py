@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from UserModel import User, user_schema
 from config import db, app
 import uuid
@@ -39,6 +39,9 @@ def login():
         'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
         app.config['SECRET_KEY']
         )
+        resp = make_response('')
+        resp.set_cookie('token', token.decode('UTF-8'))
+        return resp
 
-        return jsonify({'token': token.decode('UTF-8')})
+        #return jsonify({'token': token.decode('UTF-8')})
     return {"error": "Incorrect password or email"}
