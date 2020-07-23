@@ -3,7 +3,7 @@ from ProjectModel import Project, project_Schema, projects_Schema
 from config import db, app
 
 # Create new project
-@app.route('/project', methods=['POST'])
+@app.route('/project/add', methods=['POST'])
 def addProject():
     userId = request.json['userId']
     name = request.json['name']
@@ -33,7 +33,7 @@ def getProject(id):
     return project_Schema.jsonify(project)
 
 # Update a project
-@app.route('/project/<id>', methods=['PUT'])
+@app.route('/project/update/<id>', methods=['PUT'])
 def updateProject(id):
     project = Project.query.get(id)
     userId = request.json['userId']
@@ -59,7 +59,7 @@ def updateProject(id):
     return project_Schema.jsonify(project)
 
 # Delete a project
-@app.route('/project/<id>', methods=['DELETE'])
+@app.route('/project/delete/<id>', methods=['DELETE'])
 def deleteProject(id):
     project = Project.query.get(id)
     db.session.delete(project)
