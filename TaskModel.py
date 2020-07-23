@@ -11,8 +11,7 @@ class Task(db.Model):
 
     def __init__(self, userId, phaseId, taskText, completed):
         self.userId = userId
-        self.projectId = projectId
-        self.phaseNumber = phaseNumber
+        self.phaseId = phaseId
         self.taskText = taskText 
         self.completed = completed
 

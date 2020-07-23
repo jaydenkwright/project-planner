@@ -33,7 +33,8 @@ class PhaseSchema(marsh.Schema):
         'description',
         'category',
         'dueDate',
-        'completed')
+        'completed',
+        'date')
 
 phase_schema = PhaseSchema()
 phases_schema = PhaseSchema(many=True)
