@@ -4,7 +4,7 @@ from config import db, marsh
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer)
+    userId = db.Column(db.String())
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(200))
     category = db.Column(db.String(100), nullable=False)
