@@ -44,3 +44,12 @@ def updateTask(id):
 
     db.session.commit()
     return task_schema.jsonify(task)
+
+# Delete tasks
+@app.route('/task/delete/<id>', methods=['DELETE'])
+def deleteTask(id):
+    task = Task.query.get(id)
+    db.session.delete(task)
+    db.session.commit()
+
+    return task_schema.jsonify(task)
