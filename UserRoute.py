@@ -40,8 +40,7 @@ def login():
         app.config['SECRET_KEY']
         )
         resp = make_response('')
-        resp.set_cookie('token', token.decode('UTF-8'))
+        resp.set_cookie('token', token.decode('UTF-8'), httponly = True)
         return resp
 
-        #return jsonify({'token': token.decode('UTF-8')})
     return {"error": "Incorrect password or email"}
