@@ -31,3 +31,27 @@ def getPhase(id):
 def getUserPhases(userId):
     phase = Phase.query.filter(Phase.userId == userId).all()
     return phases_schema.jsonify(phase)
+
+@app.route('/phase/<id>', methods=['PUT'])
+def updatePhase(id):
+    phase = Phase.query.get(id)
+    userId = request.json['userId']
+    projectId = request.json['projectId']
+    phaseNumber = request.json['phaseNumber']
+    name = request.json['name']
+    description = request.json['description']
+    category = request.json['category']
+    dueDate = request.json['dueDate']
+    completed = request.json['completed']
+
+    phase.userId = userId
+    phase.projectId = projectId
+    phase.phaseNumber = phaseNumber
+    phase.name = name
+    phase.description = description
+    phase.category = category
+    phase.dueDate = dueDate
+    phase.completed = completed
+
+    db.session.commit()
+    return phase_schema.jsonify(phase)
