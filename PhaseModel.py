@@ -3,7 +3,7 @@ from config import db, marsh
 
 class Phase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer)
+    userId = db.Column(db.String())
     projectId = db.Column(db.Integer)
     phaseNumber = db.Column(db.Integer)
     name = db.Column(db.String(100), nullable=False)
