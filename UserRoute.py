@@ -22,3 +22,23 @@ def register():
         'message': 'User created'
     }
 
+@app.route('/login', methods=['POST'])
+def login():
+    auth = request.authorization
+    email = auth.username
+    password = auth.password
+    if not auth or not email or not password:
+        return {"error": "Missing email or password"}
+    
+    user = User.query.filter(User.email == email).first()
+    if not user:
+        return {"error": "No user found"}
+
+    if check_password_hash(user.password, password):
+        token = jwt.encode({'userId': user.userId, 
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60)},
+        app.config['SECRET_KEY']
+        )
+
+        return jsonify({'token': token.decode('UTF-8')})
+    return {"error": "Incorrect password or email"}
