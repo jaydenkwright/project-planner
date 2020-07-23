@@ -3,7 +3,7 @@ from config import db, marsh
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer)
+    userId = db.Column(db.String())
     phaseId = db.Column(db.Integer)
     taskText = db.Column(db.String(200), nullable=False)
     completed = db.Column(db.Boolean())
