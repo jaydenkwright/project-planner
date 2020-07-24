@@ -20,7 +20,7 @@ def register():
     db.session.commit()
 
     return {
-        'message': 'User created'
+        'msg': 'User created'
     }
 
 @app.route('/login', methods=['POST'])
@@ -29,11 +29,11 @@ def login():
     email = auth.username
     password = auth.password
     if not auth or not email or not password:
-        return {"error": "Missing email or password"}
+        raise AssertionError('Missing email or password')
     
     user = User.query.filter(User.email == email).first()
     if not user:
-        return {"error": "No user found"}
+        raise AssertionError('Incorrect email or password')
 
     if check_password_hash(user.password, password):
         token = jwt.encode({'userId': user.userId, 
@@ -44,7 +44,8 @@ def login():
         resp.set_cookie('token', token.decode('UTF-8'), httponly = True)
         return resp
 
-    return {"error": "Incorrect password or email"}
+    raise AssertionError('Incorrect email or password')
+    
 
 @app.route('/user', methods=['GET'])
 @verify
