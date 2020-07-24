@@ -23,6 +23,18 @@ class Phase(db.Model):
         self.dueDate = dueDate
         self.completed = completed
 
+    @validates('name')
+    def nameValidation(self, key, name):
+        if not name:
+            raise AssertionError('No name provided')
+        if len(name) > 100:
+            raise AssertionError('Max character limit exceeded')
+
+    @validates('description')
+    def descriptionValidation(self, key, description):
+        if len(description) > 200:
+            raise AssertionError('Max character limit exceeded')
+
 class PhaseSchema(marsh.Schema):
     class Meta:
         fields = ('id',
