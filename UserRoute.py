@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify, make_response
-from UserModel import User, user_schema
+from UserModel import User, user_schema, get_user_schema
 from config import db, app
 import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
+from verify import verify
 import datetime
 
 @app.route('/register', methods=['POST'])
@@ -44,3 +45,9 @@ def login():
         return resp
 
     return {"error": "Incorrect password or email"}
+
+@app.route('/user', methods=['GET'])
+@verify
+def getCurrentUser(currentUser):
+    user = User.query.filter(User.userId == currentUser.userId).first()
+    return get_user_schema.jsonify(user)
