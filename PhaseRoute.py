@@ -7,7 +7,7 @@ from config import db, app
 @app.route('/phase/add', methods=['POST'])
 @verify
 def addPhase(user):
-    userId = request.json['userId']
+    userId = user.userId
     projectId = request.json['projectId']
     phaseNumber = request.json['phaseNumber']
     name = request.json['name']
@@ -39,7 +39,7 @@ def getUserPhases(user, userId):
 @verify
 def updatePhase(user, id):
     phase = Phase.query.get(id)
-    userId = request.json['userId']
+    userId = user.userId
     projectId = request.json['projectId']
     phaseNumber = request.json['phaseNumber']
     name = request.json['name']
