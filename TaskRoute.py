@@ -7,19 +7,16 @@ from config import db, app
 @app.route('/task/add', methods=['POST'])
 @verify
 def addTask(user):
-    try:
-        userId = user.userId
-        phaseId = request.json['phaseId']
-        taskText = request.json['taskText']
-        completed = False
+    userId = user.userId
+    phaseId = request.json['phaseId']
+    taskText = request.json['taskText']
+    completed = False
 
-        task = Task(userId, phaseId, taskText, completed)
-        db.session.add(task)
-        db.session.commit()
+    task = Task(userId, phaseId, taskText, completed)
+    db.session.add(task)
+    db.session.commit()
 
-        return task_schema.jsonify(task)
-    except AssertionError as exception_message: 
-        return jsonify(msg='Error: {}. '.format(exception_message)), 400
+    return task_schema.jsonify(task)
 
 
 # Get specific task

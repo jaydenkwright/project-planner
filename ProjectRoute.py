@@ -24,10 +24,10 @@ def addProject(user):
     return project_Schema.jsonify(project)
 
 # Get all projects created by a certain user
-@app.route('/projects/<userId>', methods=['GET'])
+@app.route('/projects', methods=['GET'])
 @verify
-def getUserProjects(user, userId):
-    projects = Project.query.filter(Project.userId == userId).all()
+def getUserProjects(user):
+    projects = Project.query.filter(Project.userId == user.userId).all()
     return projects_Schema.jsonify(projects)
 
 # Get a specific project with a given id

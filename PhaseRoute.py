@@ -14,7 +14,7 @@ def addPhase(user):
     description = request.json['description']
     category = request.json['category']
     dueDate = request.json['dueDate']
-    completed = request.json['completed']
+    completed = False
 
     phase = Phase(userId, projectId, phaseNumber, name, description, category, dueDate, completed)
     db.session.add(phase)

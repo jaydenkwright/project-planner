@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import validates 
 from config import db, marsh
 
 class User(db.Model):
@@ -22,6 +23,7 @@ class User(db.Model):
             raise AssertionError('First name was not provided')
         if len(firstName) > 50:
             raise AssertionError('Max character limit exceeded')
+        return firstName
 
     @validates('lastName')
     def lastNameValidation(self, key, lastName):
@@ -29,6 +31,7 @@ class User(db.Model):
             raise AssertionError('Last name was not provided')
         if len(lastName) > 50:
             raise AssertionError('Max character limit exceeded')
+        return lastName
 
     @validates('email')
     def emailValidation(self, key, email):
@@ -41,6 +44,7 @@ class User(db.Model):
     def passwordValidation(self, key, password):
         if not password:
             raise AssertionError('Password was not provided')
+        return password
 
 class UserSchema(marsh.Schema):
     class Meta:
