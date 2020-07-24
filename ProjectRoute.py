@@ -8,7 +8,7 @@ from config import db, app
 @app.route('/project/add', methods=['POST'])
 @verify
 def addProject(user):
-    userId = request.json['userId']
+    userId = user.userId
     name = request.json['name']
     description = request.json['description']
     category = request.json['category']
@@ -41,7 +41,7 @@ def getProject(id):
 @verify
 def updateProject(user, id):
     project = Project.query.get(id)
-    userId = request.json['userId']
+    userId = user.userId
     name = request.json['name']
     description = request.json['description']
     category = request.json['category']
