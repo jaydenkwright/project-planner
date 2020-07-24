@@ -16,6 +16,32 @@ class User(db.Model):
         self.email = email
         self.password = password
 
+    @validates('firstName')
+    def firstNameValidation(self, key, firstName):
+        if not firstName:
+            raise AssertionError('First name was not provided')
+        if len(firstName) > 50:
+            raise AssertionError('Max character limit exceeded')
+
+    @validates('lastName')
+    def lastNameValidation(self, key, lastName):
+        if not lastName:
+            raise AssertionError('Last name was not provided')
+        if len(lastName) > 50:
+            raise AssertionError('Max character limit exceeded')
+
+    @validates('email')
+    def emailValidation(self, key, email):
+        if not email:
+            raise AssertionError('Email was not provided')
+        if len(email) > 100:
+            raise AssertionError('Max character limit exceeded') 
+
+    @validates('password')
+    def passwordValidation(self, key, password):
+        if not password:
+            raise AssertionError('Password was not provided')
+
 class UserSchema(marsh.Schema):
     class Meta:
         fields = ('id',
