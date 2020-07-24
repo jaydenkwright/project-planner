@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import validates 
 from config import db, marsh
 
 class Phase(db.Model):
@@ -29,11 +30,13 @@ class Phase(db.Model):
             raise AssertionError('No name provided')
         if len(name) > 100:
             raise AssertionError('Max character limit exceeded')
+        return name
 
     @validates('description')
     def descriptionValidation(self, key, description):
         if len(description) > 200:
             raise AssertionError('Max character limit exceeded')
+        return description
 
 class PhaseSchema(marsh.Schema):
     class Meta:
