@@ -55,4 +55,13 @@ class UserSchema(marsh.Schema):
         'email',
         'password')
 
+class GetUserSchema(marsh.Schema):
+    class Meta:
+        fields = ('id',
+        'userId',
+        'firstName',
+        'lastName',
+        'email')
+
+get_user_schema = GetUserSchema()
 user_schema = UserSchema()

@@ -29,10 +29,10 @@ def getPhase(id):
     return phase_schema.jsonify(phase)
 
 # Get all phases from certain user
-@app.route('/phases/<userId>', methods=['GET'])
+@app.route('/phases', methods=['GET'])
 @verify
-def getUserPhases(user, userId):
-    phase = Phase.query.filter(Phase.userId == userId).all()
+def getUserPhases(user):
+    phase = Phase.query.filter(Phase.userId == user.userId).all()
     return phases_schema.jsonify(phase)
 
 @app.route('/phase/update/<id>', methods=['PUT'])
