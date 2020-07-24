@@ -51,3 +51,9 @@ def login():
 def getCurrentUser(currentUser):
     user = User.query.filter(User.userId == currentUser.userId).first()
     return get_user_schema.jsonify(user)
+
+@app.route('/user/<id>', methods=['GET'])
+@verify
+def getUser(user, id):
+    user = User.query.get(id)
+    return get_user_schema.jsonify(user)
