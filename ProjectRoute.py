@@ -16,7 +16,7 @@ def addProject(user):
         dueDate = request.json['dueDate'] 
         github = request.json['github']
         figma = request.json['figma']
-        privacy = request.json['privacy']
+        privacy = False
 
         project = Project(userId, name, description, category, dueDate, github, figma, privacy)
         db.session.add(project)

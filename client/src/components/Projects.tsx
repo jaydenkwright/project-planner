@@ -18,25 +18,23 @@ interface Project{
 }
 
 const init = [{
-    "id": 2,
-    "userId": "e0d0e645-af9a-442e-a811-325b1a7f037a",
-    "name": "Social media app",
-    "description": "Social media app built with Flask and React",
-    "category": "Web Development",
-    "dueDate": "2020-07-30T00:00:00",
-    "figma": "figma.com",
-    "github": "github.com",
+    "id": 0,
+    "userId": "",
+    "name": "",
+    "description": "",
+    "category": "",
+    "dueDate": "",
+    "figma": "",
+    "github": "",
     "privacy": false,
-    "date": "2020-07-24T01:33:22.017240",
+    "date": "",
   }]
 
 export const Projects: React.FC =() => {
     const [projects, setProjects] = useState<Project[]>(init)
     const getProjects = async () => {
         const res = await axios.get('http://localhost:5000/projects', { withCredentials: true })
-        if(res){
-            setProjects(res.data)
-        }
+        setProjects(res.data)
     }
 
     useEffect(() => {

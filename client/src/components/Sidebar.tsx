@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Sidebar() {
     return (
-        <div className="h-screen top-0 sticky overflow-y-scroll w-64">
+        <div className="h-screen top-0 sticky overflow-y-scroll w-64 sm:invisible md:visible">
             <div className="mt-12 text-center">
                 <img src={require('../assets/image1.svg')} className='w-32 h-32 m-auto' alt='Sidebar profile' />
                 <p className="mt-4 text-gray-900 text-xl font-semibold">Andrew Phillips</p>
@@ -28,7 +28,7 @@ export default function Sidebar() {
                 </div>
                 <div className='flex text-gray-900 p-4 text-lg font-medium hover:text-gray-800 items-center'>
                     <span>
-                        <img src={require('../assets/mail.svg')} className="w-4 h-4"/>
+                        <img src={require('../assets/mail.svg')} className="w-4 h-4" alt="Messages"/>
                     </span>
                     <p className='px-2'>Messages</p>
                 </div>
