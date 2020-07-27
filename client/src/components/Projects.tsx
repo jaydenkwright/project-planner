@@ -47,9 +47,6 @@ export const Projects: React.FC =() => {
                 {projects.map((project) => (
                     <ProjectCard data={project} />
                 ))}
-                {/* <ProjectCard data={{title: 'Social Media App', description: 'A social media app built with a React.JS frontend and a flask backend', category: 'Web Devlopment'}}/> 
-                <ProjectCard data={{title: 'Social Media App', description: 'A social media app built with a React.JS frontend and a flask backend', category: 'Web Devlopment'}}/> 
-                <ProjectCard data={{title: 'Social Media App', description: 'A social media app built with a React.JS frontend and a flask backend', category: 'Web Devlopment'}}/> */}
                 <NewProjectCard />
             </div>
         </div>
