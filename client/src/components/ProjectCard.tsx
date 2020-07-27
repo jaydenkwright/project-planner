@@ -10,7 +10,7 @@ interface Props{
 
 export const ProjectCard: React.FC<Props> = ({ data }) => {
     return (
-        <div className="bg-white w-56 h-56 rounded-lg mx-12 mt-10 p-4 shadow-md">
+        <div className="flex-initial m-10 bg-white h-56 w-56 rounded-lg p-4 shadow-md">
             <p className="text-gray-900 font-semibold truncate">{data.title}</p>
             <p className="text-gray-600 font-medium mt-2">{data.description}</p>
             <div className="px-2 bg-red-500 rounded-full text-center shadow-sm">
