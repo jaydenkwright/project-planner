@@ -20,7 +20,7 @@ interface Project{
 const init = [{
     "id": 2,
     "userId": "e0d0e645-af9a-442e-a811-325b1a7f037a",
-    "name": "Fuck",
+    "name": "Social media app",
     "description": "Social media app built with Flask and React",
     "category": "Web Development",
     "dueDate": "2020-07-30T00:00:00",
