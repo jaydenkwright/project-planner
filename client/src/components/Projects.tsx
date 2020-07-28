@@ -2,34 +2,9 @@ import React, {useEffect, useState} from 'react'
 import Header from './Header'
 import ProjectCard from './ProjectCard'
 import NewProjectCard from './NewProjectCard'
+import { Project, init } from './Interfaces/ProjectInterface'
 import Layout from './Layout'
 import axios from 'axios'
-
-interface Project{
-    id: number,
-    userId: string,
-    name: string,
-    description: string,
-    category: string,
-    dueDate: string,
-    figma: string,
-    github: string,
-    privacy: boolean,
-    date: string
-}
-
-const init = [{
-    "id": 0,
-    "userId": "",
-    "name": "",
-    "description": "",
-    "category": "",
-    "dueDate": "",
-    "figma": "",
-    "github": "",
-    "privacy": false,
-    "date": "",
-  }]
 
 export const Projects: React.FC =() => {
     const [projects, setProjects] = useState<Project[]>(init)
