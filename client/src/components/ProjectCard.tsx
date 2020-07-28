@@ -1,18 +1,5 @@
 import React from 'react'
-
-interface Props{
-    data: {
-        id: number,
-        userId: string,
-        name: string,
-        description: string,
-        category: string,
-        dueDate: string,
-        figma: string,
-        github: string,
-        privacy: boolean,
-    }
-}
+import { Props } from './Interfaces/ProjectInterface'
 
 export const ProjectCard: React.FC<Props> = ({ data }) => {
     return (
