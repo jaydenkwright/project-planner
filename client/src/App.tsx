@@ -1,11 +1,11 @@
 import React from 'react';
 import Sidebar from './components/Sidebar'
 import Projects from './components/Projects'
+import Create from './components/Create'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                 <Projects />
               </Route>
               <Route path='/create' exact>
-                
+                <Create />
               </Route>
             </Switch>
           </Router>

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Header from './Header'
 import ProjectCard from './ProjectCard'
 import NewProjectCard from './NewProjectCard'
+import Layout from './Layout'
 import axios from 'axios'
 
 interface Project{
@@ -43,12 +44,12 @@ export const Projects: React.FC =() => {
     return (
         <div className="">
             <Header title="Projects"/>
-            <div className="flex flex-wrap w-max-sm bg-gray-200 rounded-lg h-max-sm pb-64">
+            <Layout>
                 {projects.map((project) => (
                     <ProjectCard data={project} />
                 ))}
                 <NewProjectCard />
-            </div>
+            </Layout>
         </div>
     )
 }
