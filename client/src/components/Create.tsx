@@ -3,6 +3,7 @@ import Header from './Header'
 import Layout from './Layout'
 import moment from 'moment'
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 export default function Create() {
     const [name, setName] = useState('')
@@ -10,21 +11,26 @@ export default function Create() {
     const [category, setCategory] = useState<any>('Programming')
     const [dueDate, setDueDate] = useState('')
     const [privacy, setPrivacy] = useState<any>('Private')
-
+    const [project, setProject] = useState<any>(undefined)
+    const history = useHistory()
     const onSubmit = (e: any): void => {
         e.preventDefault()
         const createProject = async () => {
-            const res = await axios.post('http://localhost:5000/project/add', {
+            const res: any = await axios.post('http://localhost:5000/project/add', {
                 name,
                 description,
                 category,
                 dueDate,
                 github: 'github.com',
                 figma: 'figma.com',
-                privacy
+                privacy: privacy === 'Private' ? true : false
             }, { withCredentials: true })
+                .then(r => setProject(r.data))   
         }
         createProject()
+    }
+    if(project){
+        history.push(`/projects/${project.id}`)
     }
     return (
         <div>
