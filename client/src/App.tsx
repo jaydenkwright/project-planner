@@ -27,7 +27,7 @@ function App() {
               <Route path='/projects/:id' exact>
                 <Project />
               </Route>
-              <Route path='/create/phase' exact>
+              <Route path='/create/phase/:projectId' exact>
                 <CreatePhase />
               </Route>
             </Switch>
