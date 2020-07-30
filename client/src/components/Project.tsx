@@ -31,7 +31,7 @@ export default function Project() {
             <Layout>
                 {phases ? 
                     phases.map((phase: any) => (
-                            <PhaseCard data={phase} />
+                            <PhaseCard key={phase.id} data={phase} />
                     ))
                 : null}
                 {project ? <NewCard title='Create New Phase' destination={`create/phase/${project.id}`}/> : null}
