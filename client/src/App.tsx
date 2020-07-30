@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './components/Sidebar'
 import Projects from './components/Projects'
-import Create from './components/Create'
+import CreateProject from './components/CreateProject'
 import Project from './components/Project'
 import {
   BrowserRouter as Router,
@@ -21,7 +21,7 @@ function App() {
                 <Projects />
               </Route>
               <Route path='/create/project' exact>
-                <Create />
+                <CreateProject />
               </Route>
               <Route path='/projects/:id' exact>
                 <Project />
