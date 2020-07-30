@@ -4,6 +4,7 @@ import Projects from './components/Projects'
 import CreateProject from './components/CreateProject'
 import CreatePhase from './components/CreatePhase'
 import Project from './components/Project'
+import Phase from './components/Phase'
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +30,9 @@ function App() {
               </Route>
               <Route path='/create/phase/:projectId' exact>
                 <CreatePhase />
+              </Route>
+              <Route path='/phase/:id' exact>
+                <Phase />
               </Route>
             </Switch>
           </Router>
