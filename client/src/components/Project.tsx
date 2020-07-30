@@ -4,7 +4,8 @@ import { PhaseInterface } from './Interfaces/PhaseInterface'
 import axios from 'axios'
 import Layout from './Layout'
 import Header from './Header'
-import Phases from './Phases'
+import PhaseCard from './PhaseCard'
+import NewCard from './NewCard'
 import { useParams } from 'react-router-dom'
 
 export default function Project() {
@@ -30,9 +31,10 @@ export default function Project() {
             <Layout>
                 {phases ? 
                     phases.map((phase: any) => (
-                            <Phases data={phase} />
+                            <PhaseCard data={phase} />
                     ))
                 : null}
+                <NewCard title='Create New Phase' destination='create/phase'/>
             </Layout>
         </div>
     )
