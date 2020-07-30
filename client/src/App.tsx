@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './components/Sidebar'
 import Projects from './components/Projects'
 import Create from './components/Create'
+import Project from './components/Project'
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,8 +20,14 @@ function App() {
               <Route path='/' exact>
                 <Projects />
               </Route>
-              <Route path='/create' exact>
+              <Route path='/create/project' exact>
                 <Create />
+              </Route>
+              <Route path='/projects/:id' exact>
+                <Project />
+              </Route>
+              <Route path='/create/phase' exact>
+                fukc
               </Route>
             </Switch>
           </Router>
