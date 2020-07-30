@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Header from './Header'
 import ProjectCard from './ProjectCard'
-import NewProjectCard from './NewProjectCard'
-import { Project, init } from './Interfaces/ProjectInterface'
+import NewCard from './NewCard'
+import { ProjectInterface, init } from './Interfaces/ProjectInterface'
 import Layout from './Layout'
 import axios from 'axios'
 
 export const Projects: React.FC =() => {
-    const [projects, setProjects] = useState<Project[]>(init)
+    const [projects, setProjects] = useState<ProjectInterface[]>(init)
     const getProjects = async () => {
         const res = await axios.get('http://localhost:5000/projects', { withCredentials: true })
         setProjects(res.data)
@@ -21,9 +21,9 @@ export const Projects: React.FC =() => {
             <Header title="Projects"/>
             <Layout>
                 {projects.map((project) => (
-                    <ProjectCard data={project} />
+                    <ProjectCard key={project.id} data={project} />
                 ))}
-                <NewProjectCard />
+                <NewCard title='Create New Project' destination={`create/project/}`}/>
             </Layout>
         </div>
     )
