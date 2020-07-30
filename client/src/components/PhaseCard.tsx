@@ -1,9 +1,11 @@
 import React from 'react'
 import { Props } from './Interfaces/PhaseInterface'
+import { useHistory } from "react-router-dom";
 
 const PhaseCard: React.FC<Props> = ({ data }) => {
+    const history = useHistory()
     return (
-        <div className='flex-initial bg-white w-64 p-4 rounded-lg m-10'>
+        <div className='flex-initial bg-white w-64 p-4 rounded-lg m-10' onClick={() => history.push(`/phase/${data.id}`)}>
             <div className='text-2xl font-semibold text-gray-900'>
                 {data.name}
             </div>
