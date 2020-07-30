@@ -34,7 +34,7 @@ export default function Project() {
                             <PhaseCard data={phase} />
                     ))
                 : null}
-                <NewCard title='Create New Phase' destination='create/phase'/>
+                {project ? <NewCard title='Create New Phase' destination={`create/phase/${project.id}`}/> : null}
             </Layout>
         </div>
     )
