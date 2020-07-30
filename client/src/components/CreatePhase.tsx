@@ -12,7 +12,7 @@ export const CreatePhase: React.FC = () => {
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('Programming')
     const [dueDate, setDueDate] = useState('')
-    const [phase, setPhase] = useState()
+    const [phase, setPhase] = useState<any>(undefined)
     const submit = (e: any): void => {
         e.preventDefault()
         const createPhase = async () => {
