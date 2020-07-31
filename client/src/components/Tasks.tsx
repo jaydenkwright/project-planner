@@ -22,7 +22,7 @@ export const Tasks = () => {
                 <div className='text-xl text-text-gray-800 shadow-sm'>
                     To do
                 </div>
-                <CreateTask />
+                <CreateTask setTasks={setTasks} tasks={tasks ? tasks : []}/>
                 {tasks ?
                     tasks.map((task) => (
                         <Task data={task} />
