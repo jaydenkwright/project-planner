@@ -7,14 +7,15 @@ class Task(db.Model):
     userId = db.Column(db.String())
     phaseId = db.Column(db.Integer)
     taskText = db.Column(db.String(200), nullable=False)
-    completed = db.Column(db.Boolean())
+    stage = db.Column(db.String())
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self, userId, phaseId, taskText, completed):
+    def __init__(self, userId, phaseId, taskText, stage):
         self.userId = userId
         self.phaseId = phaseId
         self.taskText = taskText 
-        self.completed = completed
+        self.stage = stage
+
 
     @validates('taskText')
     def textValidation(self, key, text):
@@ -30,7 +31,7 @@ class TaskSchema(marsh.Schema):
         'userId',
         'phaseId',
         'taskText',
-        'completed',
+        'stage',
         'date')
 
 task_schema = TaskSchema()
