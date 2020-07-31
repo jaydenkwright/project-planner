@@ -11,9 +11,9 @@ def addTask(user):
         userId = user.userId
         phaseId = request.json['phaseId']
         taskText = request.json['taskText']
-        completed = False
+        stage = "todo"
 
-        task = Task(userId, phaseId, taskText, completed)
+        task = Task(userId, phaseId, taskText, stage)
         db.session.add(task)
         db.session.commit()
 
@@ -51,12 +51,12 @@ def updateTask(user, id):
         userId = user.userId
         phaseId = request.json['phaseId']
         taskText = request.json['taskText']
-        completed = request.json['completed']
+        stage = request.json['stage']
 
         task.userId = userId
         task.phaseId = phaseId
         task.taskText = taskText
-        task.completed = completed
+        task.stage = stage
 
         db.session.commit()
         return task_schema.jsonify(task)
