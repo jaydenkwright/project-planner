@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './components/Sidebar'
 import Projects from './components/Projects'
 import CreateProject from './components/CreateProject'
 import CreatePhase from './components/CreatePhase'
 import Project from './components/Project'
 import Phase from './components/Phase'
+import Registration from './components/Registration'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,8 +13,11 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <div className="App">
+      {loggedIn ?
       <div className="flex">
         <Sidebar />
         <div className="flex-1 bg-white">
@@ -38,6 +42,13 @@ function App() {
           </Router>
         </div>
       </div>
+      : <Router>
+          <Switch>
+            <Route path='/register'>
+              <Registration />
+            </Route>
+          </Switch>
+        </Router>}
     </div>
   );
 }
