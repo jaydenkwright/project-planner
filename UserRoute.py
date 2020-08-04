@@ -30,9 +30,9 @@ def register():
 def login():
     try:
         auth = request.authorization
-        email = auth.username
-        password = auth.password
-        if not auth or not email or not password:
+        email = request.json['email']
+        password = request.json['password']
+        if not email or not password:
             raise AssertionError('Missing email or password')
         
         user = User.query.filter(User.email == email).first()
