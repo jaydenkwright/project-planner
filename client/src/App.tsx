@@ -6,6 +6,7 @@ import CreatePhase from './components/CreatePhase'
 import Project from './components/Project'
 import Phase from './components/Phase'
 import Registration from './components/Registration'
+import Login from './components/Login'
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +14,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
 
   return (
     <div className="App">
@@ -46,6 +47,9 @@ function App() {
           <Switch>
             <Route path='/register'>
               <Registration />
+            </Route>
+            <Route path='/login'>
+              <Login />
             </Route>
           </Switch>
         </Router>}
