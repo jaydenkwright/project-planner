@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar'
 import Projects from './components/Projects'
 import CreateProject from './components/CreateProject'
@@ -7,6 +7,7 @@ import Project from './components/Project'
 import Phase from './components/Phase'
 import Registration from './components/Registration'
 import Login from './components/Login'
+import axios from 'axios'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +15,20 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState<boolean>()
+  useEffect(() => {
+    const isLoggedIn = async () => {
+      try{
+        const res = await axios.get('http://localhost:5000/isLoggedIn', { withCredentials: true })
+        console.log(res)
+        setLoggedIn(true)
+      }catch(err){
+        setLoggedIn(false)
+        console.log(err)
+      }
+    }
+    isLoggedIn()
+  }, [])
 
   return (
     <div className="App">
@@ -43,16 +57,16 @@ function App() {
           </Router>
         </div>
       </div>
-      : <Router>
+      : loggedIn === false ? <Router>
           <Switch>
-            <Route path='/register'>
+            <Route path='/'>
               <Registration />
-            </Route>
-            <Route path='/login'>
               <Login />
             </Route>
+            <Route path='/login'>
+            </Route>
           </Switch>
-        </Router>}
+        </Router> : 'loading'}
     </div>
   );
 }
