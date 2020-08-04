@@ -70,3 +70,11 @@ def getUser(user, id):
         return get_user_schema.jsonify(user)
     except:
         raise AssertionError('Something went wrong')
+
+@app.route('/isLoggedIn', methods=['GET'])
+@verify
+def isLoggedIn(user):
+    try:
+        return {"msg": True}
+    except:
+        raise AssertionError('Something went wrong')
