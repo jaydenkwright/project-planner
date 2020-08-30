@@ -63,6 +63,17 @@ def updateTask(user, id):
     except:
         raise AssertionError('Something went wrong')
 
+@app.route('/task/<id>/<stage>', methods=['POST'])
+def updateStage(id, stage):
+    try:
+        task = Task.query.get(id)
+        task.stage = stage
+
+        db.session.commit()
+        return task_schema.jsonify(task)
+    except:
+        raise AssertionError('Something went wrong')
+
 # Delete tasks
 @app.route('/task/delete/<id>', methods=['DELETE'])
 @verify
