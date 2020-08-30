@@ -44,13 +44,10 @@ export const Tasks = () => {
     }
 
     const updateStage = async () => {
-        console.log(dragItem.current.id, dragItem.current.stage)
         const res = await axios.post(`http://localhost:5000/task/${dragItem.current.id}/${dragItem.current.stage}`, { withCredentials: true })
-        console.log(res.data)
     }
 
     const handleDragEnd = () => {
-        console.log(dragItem.current.stage)
         updateStage()
         setDragging(false)
         dragNode.current?.removeEventListener('dragend', handleDragEnd)
