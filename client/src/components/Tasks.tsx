@@ -15,7 +15,6 @@ export const Tasks = () => {
     useEffect(() => {
         const getTasks = async () => {
             const res = await axios.get(`http://localhost:5000/tasks/${id}`, { withCredentials: true })
-            console.log(res.data)
             setTasks(res.data)
         }
         getTasks()
@@ -40,17 +39,27 @@ export const Tasks = () => {
                     return [...newList, {...currentTask[0], stage: params.stage}]
                 }
             })
+            dragItem.current.stage = params.stage
         }
     }
 
+    const updateStage = async () => {
+        console.log(dragItem.current.id, dragItem.current.stage)
+        const res = await axios.post(`http://localhost:5000/task/${dragItem.current.id}/${dragItem.current.stage}`, { withCredentials: true })
+        console.log(res.data)
+    }
+
     const handleDragEnd = () => {
+        console.log(dragItem.current.stage)
+        updateStage()
         setDragging(false)
         dragNode.current?.removeEventListener('dragend', handleDragEnd)
         dragItem.current = null
         dragNode.current = null
     }
+    
     const todos = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'todo') : null
-    const inProgress = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'in progress') : null
+    const inProgress = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'in_progress') : null
     const completed = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'completed') : null
     return (
         <div className='flex p-4 w-full'>
@@ -65,7 +74,7 @@ export const Tasks = () => {
                     )) 
                 : null}
             </div>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in progress'}) : undefined}>
+            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in_progress'}) : undefined}>
                 <div className='text-xl text-text-gray-800'>
                     In progress
                 </div>
