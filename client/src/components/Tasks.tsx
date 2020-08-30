@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export const Tasks = () => {
-    const [tasks, setTasks] = useState<TaskInterface[]>()
+    const [tasks, setTasks] = useState<TaskInterface[] | any>()
     const [dragging, setDragging] = useState<boolean>(false)
     const { id } = useParams()
     const dragItem = useRef<any>()
@@ -30,35 +30,60 @@ export const Tasks = () => {
         }, 0)
     }
 
+    const handleDragEnter = (e: any, params: any) => {
+        e.preventDefault()
+        if (params.stage !== dragItem.current.stage){
+            const newList = tasks?.filter((task: TaskInterface) => task.id !== dragItem.current.id)
+            const currentTask = tasks.filter((task: TaskInterface) => task.id === dragItem.current.id)
+            setTasks((task: TaskInterface[]) => {
+                if (task !== [...newList, {...currentTask[0], stage: params.stage}]){
+                    return [...newList, {...currentTask[0], stage: params.stage}]
+                }
+            })
+        }
+    }
+
     const handleDragEnd = () => {
         setDragging(false)
         dragNode.current?.removeEventListener('dragend', handleDragEnd)
         dragItem.current = null
         dragNode.current = null
     }
-
+    const todos = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'todo') : null
+    const inProgress = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'in progress') : null
+    const completed = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'completed') : null
     return (
         <div className='flex p-4 w-full'>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4'>
+            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
                 <div className='text-xl text-text-gray-800 shadow-sm'>
                     To do
                 </div>
                 <CreateTask setTasks={setTasks} tasks={tasks ? tasks : []}/>
-                {tasks ?
-                    tasks.map((task) => (
-                        <Task data={task} handleDragStart={handleDragStart} dragging={dragging}/>
+                {todos ?
+                    todos.map((task: TaskInterface) => (
+                        <Task data={task} handleDragStart={handleDragStart} dragging={dragging} handleDragEnter={handleDragEnter}/>
                     )) 
                 : null}
             </div>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm'>
+            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in progress'}) : undefined}>
                 <div className='text-xl text-text-gray-800'>
                     In progress
                 </div>
+                {inProgress ?
+                    inProgress.map((task: TaskInterface) => (
+                        <Task data={task} handleDragStart={handleDragStart} dragging={dragging} handleDragEnter={handleDragEnter}/>
+                    )) 
+                : null}
             </div>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm'>
+            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'completed'}) : undefined}>
                 <div className='text-xl text-text-gray-800'>
                     Completed
                 </div>
+                {completed ?
+                    completed.map((task: TaskInterface) => (
+                        <Task data={task} handleDragStart={handleDragStart} dragging={dragging} handleDragEnter={handleDragEnter}/>
+                    )) 
+                : null}
             </div>
         </div>
     )
