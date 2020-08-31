@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
+    const [user, setUser] = useState()
+
+    useEffect(() => {
+        const getUser = async () => {
+            const res = await axios.get('http://localhost:5000/user', {
+                withCredentials: true
+            })
+            setUser(res.data)
+        }
+        getUser()
+    }, [])
+
     return (
         <div className="h-screen top-0 sticky overflow-y-scroll w-64 sm:invisible md:visible">
             <div className="mt-12 text-center">
                 <img src={require('../assets/image1.svg')} className='w-32 h-32 m-auto' alt='Sidebar profile' />
-                <p className="mt-4 text-gray-900 text-xl font-semibold">Andrew Phillips</p>
-                <p className="text-gray-600">Settings</p>
+                <p className="mt-4 text-gray-900 text-xl font-semibold">{user ? user.firstName : null}</p>
+                <p className="text-gray-600"><Link to='/settings'>Settings</Link></p>
             </div>
 
             <div className="mx-auto my-12">
