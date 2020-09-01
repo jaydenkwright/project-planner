@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom";
+import { UserInterface } from './Interfaces/UserInterface'
 
 export default function Sidebar() {
-    const [user, setUser] = useState()
+    const [user, setUser] = useState<UserInterface>()
 
     useEffect(() => {
         const getUser = async () => {
@@ -14,7 +15,6 @@ export default function Sidebar() {
         }
         getUser()
     }, [])
-
     return (
         <div className="h-screen top-0 sticky overflow-y-scroll w-64 sm:invisible md:visible">
             <div className="mt-12 text-center">
