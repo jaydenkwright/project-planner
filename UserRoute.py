@@ -62,6 +62,28 @@ def getCurrentUser(currentUser):
     except:
         raise AssertionError('Something went wrong')
 
+@app.route('/user/update', methods=['PUT'])
+@verify
+def updateUser(user):
+    try:
+        user = User.query.filter(User.userId == user.userId).first()
+        firstName = request.json['firstName']
+        lastName = request.json['lastName']
+        email = request.json['email']
+        password = request.json['password']
+        if check_password_hash(user.password, password):
+            user.firstName = firstName
+            user.lastName = lastName
+            user.email = email
+
+            db.session.commit()
+            return get_user_schema.jsonify(user)
+        else:
+            raise AssertionError('Incorrect password')
+
+    except:
+        raise AssertionError('Something went wrong')
+
 @app.route('/user/<id>', methods=['GET'])
 @verify
 def getUser(user, id):
