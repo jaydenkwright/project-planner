@@ -7,9 +7,8 @@ import Project from './components/Project'
 import Phase from './components/Phase'
 import Registration from './components/Registration'
 import Login from './components/Login'
+import Settings from './components/Settings'
 import axios from 'axios'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,13 +32,12 @@ function App() {
   }, [])
 
   return (
-    <DndProvider backend={HTML5Backend}>
     <div className="App">
       {loggedIn ?
       <div className="flex">
+        <Router>
         <Sidebar />
         <div className="flex-1 bg-white">
-          <Router>
             <Switch>
               <Route path='/' exact>
                 <Projects />
@@ -56,9 +54,12 @@ function App() {
               <Route path='/phase/:id' exact>
                 <Phase />
               </Route>
+              <Route path='/settings' exact>
+                <Settings />
+              </Route>
             </Switch>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </div>
       : loggedIn === false ? <Router>
           <Switch>
@@ -71,7 +72,6 @@ function App() {
           </Switch>
         </Router> : 'loading'}
     </div>
-    </DndProvider>
   );
 }
 
