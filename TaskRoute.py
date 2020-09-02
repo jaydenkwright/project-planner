@@ -19,7 +19,7 @@ def addTask(user):
 
         return task_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
         
 
 
@@ -30,7 +30,7 @@ def getTask(id):
         task = Task.query.get(id)
         return task_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Get all tasks from certain phase
 @app.route('/tasks/<phaseId>', methods=['GET'])
@@ -40,7 +40,7 @@ def getTasks(user, phaseId):
         task = Task.query.filter(Task.phaseId == phaseId).all()
         return tasks_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Update task
 @app.route('/task/update/<id>', methods=['PUT'])
@@ -61,7 +61,7 @@ def updateTask(user, id):
         db.session.commit()
         return task_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/task/<id>/<stage>', methods=['POST'])
 def updateStage(id, stage):
@@ -72,7 +72,7 @@ def updateStage(id, stage):
         db.session.commit()
         return task_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Delete tasks
 @app.route('/task/delete/<id>', methods=['DELETE'])
@@ -85,4 +85,4 @@ def deleteTask(user, id):
 
         return task_schema.jsonify(task)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
