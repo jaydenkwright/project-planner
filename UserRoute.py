@@ -20,9 +20,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        return {
-            'msg': 'User created'
-        }
+        return get_user_schema.jsonify(user)
     except:
         return {"msg": "Something went wrong"}, 500
 
