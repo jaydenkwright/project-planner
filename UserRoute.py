@@ -79,7 +79,7 @@ def updateUser(user):
             db.session.commit()
             return get_user_schema.jsonify(user)
         else:
-            raise AssertionError('Incorrect password')
+            return {"msg": "Incorrect Password!"}, 401
 
     except:
         raise AssertionError('Something went wrong')
