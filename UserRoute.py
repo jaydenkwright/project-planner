@@ -24,7 +24,7 @@ def register():
             'msg': 'User created'
         }
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -33,11 +33,11 @@ def login():
         email = request.json['email']
         password = request.json['password']
         if not email or not password:
-            raise AssertionError('Missing email or password')
+            return {"msg": "Missing email or passwrod"}, 401
         
         user = User.query.filter(User.email == email).first()
         if not user:
-            raise AssertionError('Incorrect email or password')
+            return {"msg": "Incorrect Password"}, 401
 
         if check_password_hash(user.password, password):
             token = jwt.encode({'userId': user.userId, 
@@ -48,9 +48,9 @@ def login():
             resp.set_cookie('token', token.decode('UTF-8'), httponly = True)
             return resp
 
-        raise AssertionError('Incorrect email or password')
+        return {"msg": "Incorrect Password"}, 401
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
     
 
 @app.route('/user', methods=['GET'])
@@ -60,7 +60,7 @@ def getCurrentUser(currentUser):
         user = User.query.filter(User.userId == currentUser.userId).first()
         return get_user_schema.jsonify(user)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/user/update', methods=['PUT'])
 @verify
@@ -79,10 +79,10 @@ def updateUser(user):
             db.session.commit()
             return get_user_schema.jsonify(user)
         else:
-            return {"msg": "Incorrect Password!"}, 401
+            return {"msg": "Incorrect Password"}, 401
 
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/user/<id>', methods=['GET'])
 @verify
@@ -91,7 +91,7 @@ def getUser(user, id):
         user = User.query.get(id)
         return get_user_schema.jsonify(user)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/isLoggedIn', methods=['GET'])
 @verify
@@ -99,4 +99,4 @@ def isLoggedIn(user):
     try:
         return {"msg": True}
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
