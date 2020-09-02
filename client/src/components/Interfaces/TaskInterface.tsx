@@ -14,6 +14,7 @@ export interface TaskInterface {
     userId: string,
     phaseId: Number,
     taskText: string,
+    stage: string,
     completed: boolean,
     date: String
 }

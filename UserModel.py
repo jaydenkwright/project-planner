@@ -39,6 +39,7 @@ class User(db.Model):
             raise AssertionError('Email was not provided')
         if len(email) > 100:
             raise AssertionError('Max character limit exceeded') 
+        return email
 
     @validates('password')
     def passwordValidation(self, key, password):

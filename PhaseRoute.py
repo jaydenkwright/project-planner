@@ -34,12 +34,12 @@ def getPhase(id):
     except:
         raise AssertionError('Something went wrong')
 
-# Get all phases from certain user
-@app.route('/phases', methods=['GET'])
+# Get all phases from certain project
+@app.route('/phases/<projectId>', methods=['GET'])
 @verify
-def getUserPhases(user):
+def getUserPhases(user, projectId):
     try:
-        phase = Phase.query.filter(Phase.userId == user.userId).all()
+        phase = Phase.query.filter(Phase.projectId == projectId).all()
         return phases_schema.jsonify(phase)
     except:
         raise AssertionError('Something went wrong')

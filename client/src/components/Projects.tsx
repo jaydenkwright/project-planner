@@ -23,7 +23,7 @@ export const Projects: React.FC =() => {
                 {projects.map((project) => (
                     <ProjectCard key={project.id} data={project} />
                 ))}
-                <NewCard title='Create New Project' destination={`create/project/}`}/>
+                <NewCard title='Create New Project' destination={`create/project/`}/>
             </Layout>
         </div>
     )

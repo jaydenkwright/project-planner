@@ -21,11 +21,9 @@ function App() {
     const isLoggedIn = async () => {
       try{
         const res = await axios.get('http://localhost:5000/isLoggedIn', { withCredentials: true })
-        console.log(res)
         setLoggedIn(true)
       }catch(err){
         setLoggedIn(false)
-        console.log(err)
       }
     }
     isLoggedIn()
