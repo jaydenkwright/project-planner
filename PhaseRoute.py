@@ -23,7 +23,7 @@ def addPhase(user):
 
         return phase_schema.jsonify(phase)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Get specific phase
 @app.route('/phase/<id>', methods=['GET'])
@@ -32,7 +32,7 @@ def getPhase(id):
         phase = Phase.query.get(id)
         return phase_schema.jsonify(phase)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Get all phases from certain project
 @app.route('/phases/<projectId>', methods=['GET'])
@@ -42,7 +42,7 @@ def getUserPhases(user, projectId):
         phase = Phase.query.filter(Phase.projectId == projectId).all()
         return phases_schema.jsonify(phase)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/phase/update/<id>', methods=['PUT'])
 @verify
@@ -70,7 +70,7 @@ def updatePhase(user, id):
         db.session.commit()
         return phase_schema.jsonify(phase)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 @app.route('/phase/delete/<id>', methods=['DELETE'])
 @verify
@@ -82,4 +82,4 @@ def deletePhase(user, id):
 
         return phase_schema.jsonify(phase)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500

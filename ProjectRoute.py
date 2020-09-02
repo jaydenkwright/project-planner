@@ -24,7 +24,7 @@ def addProject(user):
 
         return project_Schema.jsonify(project)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Get all projects created by a certain user
 @app.route('/projects', methods=['GET'])
@@ -34,7 +34,7 @@ def getUserProjects(user):
         projects = Project.query.filter(Project.userId == user.userId).all()
         return projects_Schema.jsonify(projects)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Get a specific project with a given id
 @app.route('/project/<id>', methods=['GET'])
@@ -43,7 +43,7 @@ def getProject(id):
         project = Project.query.get(id)
         return project_Schema.jsonify(project)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Update a project
 @app.route('/project/update/<id>', methods=['PUT'])
@@ -73,7 +73,7 @@ def updateProject(user, id):
 
         return project_Schema.jsonify(project)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
 
 # Delete a project
 @app.route('/project/delete/<id>', methods=['DELETE'])
@@ -86,4 +86,4 @@ def deleteProject(user, id):
 
         return project_Schema.jsonify(project)
     except:
-        raise AssertionError('Something went wrong')
+        return {"msg": "Something went wrong"}, 500
