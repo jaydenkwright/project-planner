@@ -14,8 +14,8 @@ const CreateProject: React.FC = () => {
     const [project, setProject] = useState<any>(undefined)
     const [error, setError] = useState<string | null>()
     const history = useHistory()
-    const onSubmit = (e: any): void => {
-        e.preventDefault()
+    const onSubmit = (e: React.FormEvent<HTMLFormElement> | undefined): void => {
+        e?.preventDefault()
         const createProject = async () => {
             try{
                 const res: any = await axios.post('http://localhost:5000/project/add', {
