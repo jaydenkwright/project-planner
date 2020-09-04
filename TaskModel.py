@@ -20,9 +20,9 @@ class Task(db.Model):
     @validates('taskText')
     def textValidation(self, key, text):
         if not text:
-            raise AssertionError('No text provided')
+            return {"msg": "No text was provided"}, 401
         if len(text) > 200:
-            raise AssertionError('Max character limit exceeded')
+            return {"msg": "Max character limit exceeded"}, 401 
         return text
 
 class TaskSchema(marsh.Schema):
