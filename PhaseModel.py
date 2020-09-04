@@ -27,15 +27,15 @@ class Phase(db.Model):
     @validates('name')
     def nameValidation(self, key, name):
         if not name:
-            raise AssertionError('No name provided')
+            return {"msg": "No name was provided"}, 401
         if len(name) > 100:
-            raise AssertionError('Max character limit exceeded')
+            return {"msg": "Max character limit exceeded"}, 401
         return name
 
     @validates('description')
     def descriptionValidation(self, key, description):
         if len(description) > 200:
-            raise AssertionError('Max character limit exceeded')
+            return {"msg": "Max character limit exceeded"}, 401
         return description
 
 class PhaseSchema(marsh.Schema):
