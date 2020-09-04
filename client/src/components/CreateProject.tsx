@@ -12,20 +12,25 @@ const CreateProject: React.FC = () => {
     const [dueDate, setDueDate] = useState('')
     const [privacy, setPrivacy] = useState<any>('Private')
     const [project, setProject] = useState<any>(undefined)
+    const [error, setError] = useState<string | null>()
     const history = useHistory()
     const onSubmit = (e: any): void => {
         e.preventDefault()
         const createProject = async () => {
-            const res: any = await axios.post('http://localhost:5000/project/add', {
-                name,
-                description,
-                category,
-                dueDate,
-                github: 'github.com',
-                figma: 'figma.com',
-                privacy: privacy === 'Private' ? true : false
-            }, { withCredentials: true })
-                .then(r => setProject(r.data))   
+            try{
+                const res: any = await axios.post('http://localhost:5000/project/add', {
+                    name,
+                    description,
+                    category,
+                    dueDate,
+                    github: 'github.com',
+                    figma: 'figma.com',
+                    privacy: privacy === 'Private' ? true : false
+                }, { withCredentials: true })
+                    .then(r => setProject(r.data))  
+            }catch(err){
+                setError(err.response.data.msg)
+            }
         }
         createProject()
     }
@@ -37,6 +42,9 @@ const CreateProject: React.FC = () => {
            <Header title='Create'/> 
             <Layout>
                 <div className='mx-auto py-16'>
+                    { error ? <div className='text-gray-100 px-1 font-semibold bg-red-500 rounded-lg'>
+                        {error}
+                    </div> : null}
                     <form onSubmit={onSubmit}>
                         <label className='block mt-1 mb-1 text-gray-700 px-1 font-semibold'>Name</label>
                         <input type='text' className='rounded-lg mb-1 py-2 px-2 w-64 shadow-sm outline-none focus:shadow-outline block' maxLength={100} required onChange={(e) => setName(e.target.value)}/>
