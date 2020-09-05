@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Layout from './Layout'
+import Error from './Error'
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router-dom'
@@ -12,19 +13,24 @@ export const CreatePhase: React.FC = () => {
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('Programming')
     const [dueDate, setDueDate] = useState('')
-    const [phase, setPhase] = useState<any>(undefined)
-    const submit = (e: any): void => {
-        e.preventDefault()
+    const [phase, setPhase] = useState<any>(null)
+    const [error, setError] = useState<string | null>(null)
+    const submit = (e: React.FormEvent<HTMLFormElement> | undefined): void => {
+        e?.preventDefault()
         const createPhase = async () => {
-            const res = axios.post('http://localhost:5000/phase/add', {
-                projectId,
-                name,
-                phaseNumber: 1,
-                description,
-                category,
-                dueDate
-            }, { withCredentials: true })
-                .then(r => setPhase(r.data))
+            try{
+                const res = axios.post('http://localhost:5000/phase/add', {
+                    projectId,
+                    name,
+                    phaseNumber: 1,
+                    description,
+                    category,
+                    dueDate
+                }, { withCredentials: true })
+                    .then(r => setPhase(r.data))
+            }catch(err){
+                setError(err.response.data.msg)
+            }
         }
         createPhase()
     }
@@ -37,6 +43,7 @@ export const CreatePhase: React.FC = () => {
             <Header title='Create'/>
             <Layout>
                 <div className='mx-auto py-16'>
+                    { error ? <Error error={error}/> : null}
                     <form onSubmit={submit}>
                         <label className='block mt-1 mb-1 text-gray-700 px-1 font-semibold'>Name</label>
                         <input type='text' className='rounded-lg mb-1 py-2 px-2 w-64 shadow-sm outline-none focus:shadow-outline block' maxLength={100} required onChange={e => setName(e.target.value)}/>
