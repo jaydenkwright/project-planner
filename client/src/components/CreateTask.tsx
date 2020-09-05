@@ -3,18 +3,22 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { TaskInterface } from './Interfaces/TaskInterface'
 
-export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateAction<TaskInterface[] | undefined>>, tasks: TaskInterface[]}> = ({ setTasks, tasks }) => {
+export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateAction<TaskInterface[] | undefined>>, tasks: TaskInterface[], setError: React.Dispatch<React.SetStateAction<string | null>>}> = ({ setTasks, tasks, setError }) => {
     const { id } = useParams()
     const [taskText, setTaskText] = useState('')
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const createTask = async () => {
-            const res = await axios.post('http://localhost:5000/task/add', {
-                phaseId: id,
-                taskText
-            }, { withCredentials: true})
-            setTaskText('')
-            setTasks([...tasks, res.data])
+            try{
+                const res = await axios.post('http://localhost:5000/task/add', {
+                    phaseId: id,
+                    taskText
+                }, { withCredentials: true})
+                setTaskText('')
+                setTasks([...tasks, res.data])
+            }catch(err){
+                setError(err.response.data.msg)
+            }
         }
         createTask()
     }
