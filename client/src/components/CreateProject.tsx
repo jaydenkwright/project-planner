@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Header from './Header'
 import Layout from './Layout'
-import moment from 'moment'
+import Error from './Error'
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 
@@ -42,9 +42,7 @@ const CreateProject: React.FC = () => {
            <Header title='Create'/> 
             <Layout>
                 <div className='mx-auto py-16'>
-                    { error ? <div className='text-gray-100 px-1 font-semibold bg-red-500 rounded-lg'>
-                        {error}
-                    </div> : null}
+                    { error ? <Error error={error}/> : null}
                     <form onSubmit={onSubmit}>
                         <label className='block mt-1 mb-1 text-gray-700 px-1 font-semibold'>Name</label>
                         <input type='text' className='rounded-lg mb-1 py-2 px-2 w-64 shadow-sm outline-none focus:shadow-outline block' maxLength={100} required onChange={(e) => setName(e.target.value)}/>
