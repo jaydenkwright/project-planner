@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import CreateTask from './CreateTask'
 import Task from './Task'
+import Error from './Error'
 import { TaskInterface } from './Interfaces/TaskInterface'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -8,6 +9,7 @@ import axios from 'axios'
 export const Tasks = () => {
     const [tasks, setTasks] = useState<TaskInterface[] | any>()
     const [dragging, setDragging] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
     const { id } = useParams()
     const dragItem = useRef<any>()
     const dragNode = useRef<any>()
@@ -60,11 +62,12 @@ export const Tasks = () => {
     const completed = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'completed') : null
     return (
         <div className='flex p-4 w-full'>
+            { error ? <Error error={error}/> : null}
             <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
                 <div className='text-xl text-text-gray-800 shadow-sm'>
                     To do
                 </div>
-                <CreateTask setTasks={setTasks} tasks={tasks ? tasks : []}/>
+                <CreateTask setTasks={setTasks} tasks={tasks ? tasks : []} setError={setError} />
                 {todos ?
                     todos.map((task: TaskInterface) => (
                         <Task data={task} handleDragStart={handleDragStart} dragging={dragging} handleDragEnter={handleDragEnter}/>
