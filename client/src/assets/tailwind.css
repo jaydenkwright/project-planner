@@ -21,4 +21,24 @@
     @apply text-gray-100 mt-3 font-medium;
 }
 
+.phaseCardContainer{
+    @apply flex-initial bg-white w-64 p-4 rounded-lg m-10;
+}
+
+.phaseName{
+    @apply text-2xl font-semibold text-gray-900;
+}
+
+.phaseCategoryContainer{
+    @apply bg-red-500 rounded-full shadow-sm inline-block px-2;
+}
+
+.phaseCategory{
+    @apply text-gray-100 font-medium;
+}
+
+.phaseDescription{
+    @apply mt-2 text-gray-700 text-xl;
+}
+
 @import "tailwindcss/utilities"
