@@ -5,7 +5,7 @@ const Task: React.FC<TaskProps | any> = ({ data, handleDragStart, dragging, hand
     return (
         <div draggable 
         onDragStart={(e) => handleDragStart(e, {id: data.id, stage: data.stage})}
-        className='text-lg text-gray-900 py-3 px-2 bg-gray-100 mt-2 rounded-lg'>
+        className='task'>
             {data.taskText}
         </div>
     )
