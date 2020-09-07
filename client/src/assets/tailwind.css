@@ -113,4 +113,16 @@
     @apply flex flex-wrap w-max-sm bg-gray-200 rounded-lg h-max-sm pb-64;
 }
 
+.headerContainer{
+    @apply top-0 sticky bg-white;
+}
+
+.headerTitle{
+    @apply text-6xl font-semibold text-gray-900 trun;
+}
+
+.headerDescription{
+    @apply text-gray-600 text-lg;
+}
+
 @import "tailwindcss/utilities"
