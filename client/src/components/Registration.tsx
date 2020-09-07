@@ -1,27 +1,39 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Error from './Error'
+import { useHistory } from "react-router-dom";
 
 const Registration = () => {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState<string>('')
+    const [lastName, setLastName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [error, setError] = useState<string | null>(null)
+    const history = useHistory()
 
-    const submit = (e: any) => {
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const register = async () => {
-            const res = await axios.post('http://localhost:5000/register', {
-                firstName,
-                lastName,
-                email,
-                password
-            })
+            try{
+                const res = await axios.post('http://localhost:5000/register', {
+                    firstName,
+                    lastName,
+                    email,
+                    password
+                })
+            }catch(err){
+                setError(err.response.data.msg)
+            }
         }
         register()
+        if (!error){
+            history.push(`/login`)
+        }
     }
 
     return (
         <div>
+            { error ? <Error error={error}/> : null}
             <form onSubmit={submit}>
                 <div className='flex'>
                     <div className='flex flex-col'>
