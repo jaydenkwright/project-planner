@@ -63,8 +63,8 @@ export const Tasks = () => {
     return (
         <div className='flex p-4 w-full'>
             { error ? <Error error={error}/> : null}
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
-                <div className='text-xl text-text-gray-800 shadow-sm'>
+            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
+                <div className='columnTitle'>
                     To do
                 </div>
                 <CreateTask setTasks={setTasks} tasks={tasks ? tasks : []} setError={setError} />
@@ -74,8 +74,8 @@ export const Tasks = () => {
                     )) 
                 : null}
             </div>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in_progress'}) : undefined}>
-                <div className='text-xl text-text-gray-800'>
+            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in_progress'}) : undefined}>
+                <div className='columnTitle'>
                     In progress
                 </div>
                 {inProgress ?
@@ -84,8 +84,8 @@ export const Tasks = () => {
                     )) 
                 : null}
             </div>
-            <div className='w-1/3 h-screen bg-white mx-4 rounded-lg p-4 shadow-sm' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'completed'}) : undefined}>
-                <div className='text-xl text-text-gray-800'>
+            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'completed'}) : undefined}>
+                <div className='columnTitle'>
                     Completed
                 </div>
                 {completed ?
