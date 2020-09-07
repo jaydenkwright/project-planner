@@ -116,7 +116,16 @@
     animation: fadeIn 1.5s ease;
 }
 
+.registrationTextbox{
+    @apply rounded-lg mb-1 py-2 px-2 w-32 shadow-sm outline-none;
+    animation: fadeIn 1.5s ease;
+}
+
 .textbox:focus{
+    @apply shadow-outline block;
+}
+
+.registrationTextbox:focus{
     @apply shadow-outline block;
 }
 
@@ -178,6 +187,22 @@
 .layout{
     @apply flex flex-wrap bg-gray-200 rounded-lg pb-64
 }
+
+.homeContainer{
+    @apply flex bg-gray-100 h-screen;
+}
+
+.homeTitle{
+    @apply text-gray-900 font-semibold text-5xl;
+    animation: fadeIn 1s ease;
+}
+
+.homeSubTitle{
+    @apply text-gray-700 font-semibold text-lg;
+    animation: fadeIn 1.5s ease;
+}
+
+
 
 @media screen and (max-width: 828px){
     .sidebar{
