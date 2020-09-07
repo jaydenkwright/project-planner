@@ -24,8 +24,8 @@ export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateActio
     }
     return (
         <form onSubmit={submit}>
-            <textarea className='w-full bg-gray-300 rounded-lg px-2 py-2 shadow-sm' placeholder='Enter a new task...' value={taskText} onChange={(e) => setTaskText(e.target.value)}></textarea>
-            <input type='submit' className='block px-2 py-2 rounded-lg bg-green-500 text-white shadow-sm font-semibold' />
+            <textarea className='taskTextArea' placeholder='Enter a new task...' value={taskText} onChange={(e) => setTaskText(e.target.value)}></textarea>
+            <input type='submit' className='submitBtn' />
         </form>
     )
 }
