@@ -93,4 +93,20 @@
     @apply flex text-gray-900 p-4 text-lg font-medium items-center;
 }
 
+.textboxLabel{
+    @apply block mt-1 mb-1 text-gray-700 px-1 font-semibold;
+}
+
+.textbox{
+    @apply rounded-lg mb-1 py-2 px-2 w-64 shadow-sm outline-none;
+}
+
+.textbox:focus{
+    @apply shadow-outline block;
+}
+
+.submitBtn{
+    @apply block px-2 py-2 mt-2 rounded-lg bg-green-500 text-white shadow-sm font-semibold;
+}
+
 @import "tailwindcss/utilities"
