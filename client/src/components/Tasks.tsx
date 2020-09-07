@@ -61,9 +61,9 @@ export const Tasks = () => {
     const inProgress = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'in_progress') : null
     const completed = tasks ? tasks.filter((task: TaskInterface) => task?.stage === 'completed') : null
     return (
-        <div className='flex p-4 w-full'>
+        <div className='taskContainer'>
             { error ? <Error error={error}/> : null}
-            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
+            <div className='columnContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'todo'}) : undefined}>
                 <div className='columnTitle'>
                     To do
                 </div>
@@ -74,7 +74,7 @@ export const Tasks = () => {
                     )) 
                 : null}
             </div>
-            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in_progress'}) : undefined}>
+            <div className='columnContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'in_progress'}) : undefined}>
                 <div className='columnTitle'>
                     In progress
                 </div>
@@ -84,7 +84,7 @@ export const Tasks = () => {
                     )) 
                 : null}
             </div>
-            <div className='todoContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'completed'}) : undefined}>
+            <div className='columnContainer' onDragEnter={dragging ? (e) => handleDragEnter(e, {stage: 'completed'}) : undefined}>
                 <div className='columnTitle'>
                     Completed
                 </div>
