@@ -26,11 +26,11 @@ const Registration = () => {
                 <div className='flex'>
                     <div className='flex flex-col'>
                         <label className='textboxLabel'>First Name</label>
-                        <input type='text' className='textbox' maxLength={50} required onChange={(e) => setFirstName(e.target.value)}/>
+                        <input type='text' className='registrationTextbox' maxLength={50} required onChange={(e) => setFirstName(e.target.value)}/>
                     </div>
                     <div className='flex flex-col mx-2'>
                         <label className='textboxLabel'>Last Name</label>
-                        <input type='text' className='textbox' maxLength={50} required onChange={(e) => setLastName(e.target.value)}/>
+                        <input type='text' className='registrationTextbox' maxLength={50} required onChange={(e) => setLastName(e.target.value)}/>
                     </div>
                 </div>
                 <label className='textboxLabel'>Email</label>
