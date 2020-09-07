@@ -10,13 +10,13 @@ def verify(f):
     def decorated(*args, **kwargs):
         token = request.cookies.get('token')
         if not token:
-            return {"msg": 'User is not logged in'}
+            return {"msg": 'User is not logged in'}, 401
     
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'])
             current_user = User.query.filter(User.userId == data['userId']).first()
         except:
-            return {"msg": 'User token is invalid'}
+            return {"msg": 'User token is invalid'}, 401
 
         return f(current_user, *args, **kwargs)
     return decorated
