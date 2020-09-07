@@ -109,4 +109,8 @@
     @apply block px-2 py-2 mt-2 rounded-lg bg-green-500 text-white shadow-sm font-semibold;
 }
 
+.layout{
+    @apply flex flex-wrap w-max-sm bg-gray-200 rounded-lg h-max-sm pb-64;
+}
+
 @import "tailwindcss/utilities"
