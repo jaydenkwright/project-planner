@@ -3,6 +3,7 @@
 
 .projectCardContainer{
     @apply flex-initial bg-white h-56 w-56 rounded-lg p-4 shadow-md m-10;
+    animation: fadeIn 1s ease;
 }
 
 .projectName{
@@ -15,6 +16,7 @@
 
 .projectCategoryContainer{
     @apply px-2 bg-red-500 rounded-full text-center shadow-sm;
+
 }
 
 .projectCategory{
@@ -23,6 +25,7 @@
 
 .phaseCardContainer{
     @apply flex-initial bg-white w-64 p-4 rounded-lg m-10;
+    animation: fadeIn 1s ease;
 }
 
 .phaseName{
@@ -43,6 +46,7 @@
 
 .newCardContainer{
     @apply m-10 bg-white h-56 w-56 rounded-lg p-4 shadow-md;
+    animation: fadeIn 1.5s ease;
 }
 
 .newCardTitle{
@@ -55,14 +59,21 @@
 
 .task{
     @apply text-lg text-gray-900 py-3 px-2 bg-gray-100 mt-2 rounded-lg;
+    animation: fadeIn .2s ease;
+}
+
+.taskContainer{
+    @apply flex p-4 w-full;
+    animation: fadeIn 1s ease;
 }
 
 .columnContainer{
-    @apply w-1/3 h-screen bg-white mx-4 rounded-lg p-4;
+    @apply w-1/3 h-auto bg-white mx-4 rounded-lg p-4;
+    animation: fadeIn 1.5s ease;
 }
 
 .columnTitle{
-    @apply text-xl text-text-gray-800 shadow-sm;
+    @apply text-xl text-gray-800;
 }
 
 .sidebar{
@@ -71,6 +82,7 @@
 
 .sidebarUserContainer{
     @apply mt-12 text-center;
+    animation: fadeIn 1s ease;
 }
 
 .sidebarProfilePicture{
@@ -87,6 +99,7 @@
 
 .sidebarListContainer{
     @apply mx-auto my-12;
+    animation: fadeIn 1s ease;
 }
 
 .sidebarItem{
@@ -95,10 +108,12 @@
 
 .textboxLabel{
     @apply block mt-1 mb-1 text-gray-700 px-1 font-semibold;
+    animation: fadeIn 1s ease;
 }
 
 .textbox{
     @apply rounded-lg mb-1 py-2 px-2 w-64 shadow-sm outline-none;
+    animation: fadeIn 1.5s ease;
 }
 
 .textbox:focus{
@@ -107,22 +122,99 @@
 
 .submitBtn{
     @apply block px-2 py-2 mt-2 rounded-lg bg-green-500 text-white shadow-sm font-semibold;
-}
-
-.layout{
-    @apply flex flex-wrap w-max-sm bg-gray-200 rounded-lg h-max-sm pb-64;
+    animation: fadeIn 1.5s ease;
 }
 
 .headerContainer{
     @apply top-0 sticky bg-white;
+    animation: fadeIn .5s ease;
 }
 
 .headerTitle{
-    @apply text-6xl font-semibold text-gray-900 trun;
+    @apply text-6xl font-semibold text-gray-900 truncate;
 }
 
 .headerDescription{
     @apply text-gray-600 text-lg;
+}
+
+.errorContainer{
+    @apply text-gray-100 px-1 font-semibold bg-red-500 rounded-lg;
+    animation: fadeIn .5s ease;
+}
+
+.taskTextArea{
+    @apply w-full bg-gray-300 rounded-lg px-2 py-2 shadow-sm;
+    animation: fadeIn 1.5s ease;
+}
+
+.descriptionTextArea{
+    @apply w-64 h-20 rounded-lg py-2 px-2 shadow-sm outline-none;
+    animation: fadeIn 1.5s ease;
+}
+
+.descriptionTextArea:focus{
+    @apply shadow-outline block
+}
+
+.categorySelector{
+    @apply w-64 px-2 py-2 rounded-lg shadow-sm outline-none;
+    animation: fadeIn 1.5s ease;
+}
+
+.categorySelector:focus{
+    @apply shadow-outline block
+}
+
+.dateSelector{
+    @apply w-64 px-2 py-2 rounded-lg shadow-sm outline-none;
+    animation: fadeIn 1.5s ease;
+}
+
+.dateSelector{
+    @apply shadow-outline block;
+}
+
+.layout{
+    @apply flex flex-wrap bg-gray-200 rounded-lg pb-64
+}
+
+@media screen and (max-width: 828px){
+    .sidebar{
+        display: none;
+    }
+
+    .projectCardContainer{
+        @apply mx-auto;
+    }
+
+    .newCardContainer{
+        @apply mx-auto;
+    }
+
+    .phaseCardContainer{
+        @apply mx-auto;
+    }
+
+    .layout{
+        @apply flex-col
+    }
+
+    .taskContainer{
+        @apply flex-col
+    }
+
+    .columnContainer{
+        @apply w-full mx-auto mb-8
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
 }
 
 @import "tailwindcss/utilities"
