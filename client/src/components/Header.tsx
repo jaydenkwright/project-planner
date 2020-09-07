@@ -7,10 +7,10 @@ interface Props{
 
 export const Header: React.FC<Props> = ({ title, description }) => {
     return (
-        <div className="top-0 sticky bg-white">
-            <p className="text-6xl font-semibold text-gray-900 trun">{ title }</p>
+        <div className="headerContainer">
+            <p className="headerTitle">{ title }</p>
                 {description ?
-                    <div className='text-gray-600 text-lg'>
+                    <div className='headerDescription'>
                         {description}
                     </div>
                 : null}
