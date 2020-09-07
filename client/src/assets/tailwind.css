@@ -65,4 +65,32 @@
     @apply text-xl text-text-gray-800 shadow-sm;
 }
 
+.sidebar{
+    @apply h-screen top-0 sticky overflow-y-scroll w-64;
+}
+
+.sidebarUserContainer{
+    @apply mt-12 text-center;
+}
+
+.sidebarProfilePicture{
+    @apply w-32 h-32 m-auto;
+}
+
+.sidebarUserName{
+    @apply mt-4 text-gray-900 text-xl font-semibold;
+}
+
+.sidebarSettingsLabel{
+    @apply text-gray-600;
+}
+
+.sidebarListContainer{
+    @apply mx-auto my-12;
+}
+
+.sidebarItem{
+    @apply flex text-gray-900 p-4 text-lg font-medium items-center;
+}
+
 @import "tailwindcss/utilities"
