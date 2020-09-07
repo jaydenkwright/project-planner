@@ -8,6 +8,7 @@ import Phase from './components/Phase'
 import Registration from './components/Registration'
 import Login from './components/Login'
 import Settings from './components/Settings'
+import Home from './components/Home'
 import axios from 'axios'
 import {
   BrowserRouter as Router,
@@ -16,7 +17,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState<boolean>()
+  const [loggedIn, setLoggedIn] = useState<boolean | null>(null)
   useEffect(() => {
     const isLoggedIn = async () => {
       try{
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      {loggedIn ?
+      {loggedIn === true ?
       <div className="flex">
         <Router>
         <Sidebar />
@@ -62,8 +63,7 @@ function App() {
       : loggedIn === false ? <Router>
           <Switch>
             <Route path='/'>
-              <Registration />
-              <Login />
+              <Home />
             </Route>
             <Route path='/login'>
             </Route>
