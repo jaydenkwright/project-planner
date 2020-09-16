@@ -1,23 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import Error from './Error'
+import UserContext from '../UserContext'
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const submit = (e: any) => {
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [error, setError] = useState<string | null>()
+    const user = useContext<any>(UserContext)
+    const { setLoggedIn } = user
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const login = async () => {
-            const res = await axios.post('http://localhost:5000/login', {
-                email,
-                password
-            }, { withCredentials: true })
-            console.log(res)
+            try{
+                const res = await axios.post('http://localhost:5000/login', {
+                    email,
+                    password
+                }, { withCredentials: true })
+                if(res.data){
+                    setLoggedIn(true)
+                }
+            }catch(err){
+                setError(err.response.data.msg)
+            }
         }
         login()
     }
     return (
         <div>
+            { error ? <Error error={error}/> : null}
             <form onSubmit={submit}>
                 <label className='textboxLabel'>Email</label>
                 <input type='email' className='textbox' maxLength={100} required onChange={(e) => setEmail(e.target.value)}/>
