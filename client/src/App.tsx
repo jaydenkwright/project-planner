@@ -10,10 +10,11 @@ import Login from './components/Login'
 import Settings from './components/Settings'
 import Home from './components/Home'
 import axios from 'axios'
+import { UserProvider } from './UserContext'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -28,48 +29,53 @@ function App() {
       }
     }
     isLoggedIn()
-  }, [])
+  }, [loggedIn])
 
   return (
-    <div className="App">
-      {loggedIn === true ?
-      <div className="flex">
-        <Router>
-        <Sidebar />
-        <div className="flex-1 bg-white">
+    <UserProvider value={{setLoggedIn}}>
+      <div className="App">
+        {loggedIn === true ?
+        <div className="flex">
+          <Router>
+          <Sidebar />
+          <div className="flex-1 bg-white">
+              <Switch>
+                <Route path='/' exact>
+                  <Projects />
+                </Route>
+                <Route path='/home' exact>
+                  <Projects />
+                </Route>
+                <Route path='/create/project' exact>
+                  <CreateProject />
+                </Route>
+                <Route path='/projects/:id' exact>
+                  <Project />
+                </Route>
+                <Route path='/create/phase/:projectId' exact>
+                  <CreatePhase />
+                </Route>
+                <Route path='/phase/:id' exact>
+                  <Phase />
+                </Route>
+                <Route path='/settings' exact>
+                  <Settings />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        </div>
+        : loggedIn === false ? <Router>
             <Switch>
-              <Route path='/' exact>
-                <Projects />
+              <Route path='/'>
+                <Home />
               </Route>
-              <Route path='/create/project' exact>
-                <CreateProject />
-              </Route>
-              <Route path='/projects/:id' exact>
-                <Project />
-              </Route>
-              <Route path='/create/phase/:projectId' exact>
-                <CreatePhase />
-              </Route>
-              <Route path='/phase/:id' exact>
-                <Phase />
-              </Route>
-              <Route path='/settings' exact>
-                <Settings />
+              <Route path='/login'>
               </Route>
             </Switch>
-          </div>
-        </Router>
+          </Router> : 'loading'}
       </div>
-      : loggedIn === false ? <Router>
-          <Switch>
-            <Route path='/'>
-              <Home />
-            </Route>
-            <Route path='/login'>
-            </Route>
-          </Switch>
-        </Router> : 'loading'}
-    </div>
+    </UserProvider>
   );
 }
 
