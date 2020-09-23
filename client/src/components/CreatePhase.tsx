@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 
 export const CreatePhase: React.FC = () => {
     const history = useHistory()
-    const { projectId } = useParams()
+    const { projectId } = useParams<any>()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('Programming')
@@ -62,7 +62,7 @@ export const CreatePhase: React.FC = () => {
                         </select>
                         <label className='textboxLabel'>Due By</label>
                         <input type='date' className='dateSelector' onChange={e => setDueDate(e.target.value)}/>
-                        <input type='submit' className='submitBtn'/>
+                        <input type='submit' className='submitBtn' value='Submit'/>
                     </form> 
                 </div>
             </Layout>
