@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { TaskInterface } from './Interfaces/TaskInterface'
 
 export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateAction<TaskInterface[] | undefined>>, tasks: TaskInterface[], setError: React.Dispatch<React.SetStateAction<string | null>>}> = ({ setTasks, tasks, setError }) => {
-    const { id } = useParams()
+    const { id } = useParams<any>()
     const [taskText, setTaskText] = useState('')
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -25,7 +25,7 @@ export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateActio
     return (
         <form onSubmit={submit}>
             <textarea className='taskTextArea' placeholder='Enter a new task...' value={taskText} onChange={(e) => setTaskText(e.target.value)}></textarea>
-            <input type='submit' className='submitBtn' />
+            <input type='submit' className='submitBtn' value='Submit' />
         </form>
     )
 }
