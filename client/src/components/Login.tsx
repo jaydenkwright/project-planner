@@ -34,7 +34,7 @@ const Login = () => {
                 <input type='email' className='textbox' maxLength={100} required onChange={(e) => setEmail(e.target.value)}/>
                 <label className='textboxLabel'>Password</label>
                 <input type='password' className='textbox' maxLength={100} required onChange={(e) => setPassword(e.target.value)}/>
-                <input type='submit' className='submitBtn'/>
+                <input type='submit' className='submitBtn' value='Submit' />
             </form>
         </div>
     )
