@@ -62,7 +62,7 @@ const Settings: React.FC = () => {
                         <input placeholder={user?.email} type='text' className='textbox' maxLength={100} onChange={e => setEmail(e.target.value)}/>
                         <label className='textboxLabel'>Password</label>
                         <input type='password' className='textbox' maxLength={100} required onChange={e => setPassword(e.target.value)}/>
-                        <input type='submit' className='submitBtn'/>
+                        <input type='submit' className='submitBtn' value='Submit' />
                     </form> 
                 </div>
             </Layout>
