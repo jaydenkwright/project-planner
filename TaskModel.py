@@ -25,6 +25,7 @@ class Task(db.Model):
             return {"msg": "Max character limit exceeded"}, 401 
         return text
 
+
 class TaskSchema(marsh.Schema):
     class Meta:
         fields = ('id',

@@ -15,6 +15,7 @@ class Project(db.Model):
     privacy = db.Column(db.Boolean())
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
+
     def __init__(self, userId, name, description, category, dueDate, github, figma, privacy):
         self.userId = userId
         self.name = name 

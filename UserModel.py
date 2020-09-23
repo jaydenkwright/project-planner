@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy.orm import validates 
+from sqlalchemy.orm import validates
 from config import db, marsh
 
 class User(db.Model):
