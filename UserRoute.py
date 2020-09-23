@@ -42,7 +42,7 @@ def login():
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=30)},
             app.config['SECRET_KEY']
             )
-            resp = make_response('')
+            resp = make_response({"msg": "User successfully loggedin"}, 200)
             resp.set_cookie('token', token.decode('UTF-8'), httponly = True)
             return resp
 
