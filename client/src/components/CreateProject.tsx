@@ -66,7 +66,7 @@ const CreateProject: React.FC = () => {
                             <option value='Private'>Private</option>
                             <option value='Public'>Public</option>
                         </select>
-                        <input type='submit' className='submitBtn'/>
+                        <input type='submit' className='submitBtn' value='Submit'/>
                     </form> 
                 </div>
            </Layout>
