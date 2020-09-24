@@ -46,7 +46,8 @@ export const Tasks = () => {
     }
 
     const updateStage = async () => {
-        const res = await axios.post(`/task/${dragItem.current.id}/${dragItem.current.stage}`, { withCredentials: true })
+        const res = await axios.post(`/task/${dragItem.current.id}/${dragItem.current.stage}`, 
+        { withCredentials: true })
     }
 
     const handleDragEnd = () => {
