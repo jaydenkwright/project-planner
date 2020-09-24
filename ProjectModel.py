@@ -39,6 +39,7 @@ class Project(db.Model):
             return {"msg": "Max character limit exceeded"}, 401 
         return description
 
+
 class ProjectSchema(marsh.Schema):
     class Meta:
         fields = ('id', 

@@ -24,7 +24,6 @@ class Task(db.Model):
         if len(text) > 200:
             return {"msg": "Max character limit exceeded"}, 401 
         return text
-db.create_all()
 
 
 class TaskSchema(marsh.Schema):
