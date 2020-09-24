@@ -22,8 +22,7 @@ function App() {
   useEffect(() => {
     const isLoggedIn = async () => {
       try{
-        const res = await axios.get('https://still-shelf-84448.herokuapp.com/isLoggedIn', { withCredentials: true })
-        console.log(res.data)
+        const res = await axios.get('/isLoggedIn', { withCredentials: true })
         setLoggedIn(true)
       }catch(err){
         setLoggedIn(false)

@@ -9,7 +9,7 @@ import axios from 'axios'
 export const Projects: React.FC =() => {
     const [projects, setProjects] = useState<ProjectInterface[]>(init)
     const getProjects = async () => {
-        const res = await axios.get('http://localhost:5000/projects', { withCredentials: true })
+        const res = await axios.get('/projects', { withCredentials: true })
         setProjects(res.data)
     }
 

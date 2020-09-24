@@ -18,7 +18,7 @@ const CreateProject: React.FC = () => {
         e?.preventDefault()
         const createProject = async () => {
             try{
-                const res: any = await axios.post('http://localhost:5000/project/add', {
+                const res: any = await axios.post('/project/add', {
                     name,
                     description,
                     category,

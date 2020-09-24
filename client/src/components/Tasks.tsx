@@ -10,13 +10,13 @@ export const Tasks = () => {
     const [tasks, setTasks] = useState<TaskInterface[] | any>()
     const [dragging, setDragging] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
-    const { id } = useParams()
+    const { id } = useParams<any>()
     const dragItem = useRef<any>()
     const dragNode = useRef<any>()
 
     useEffect(() => {
         const getTasks = async () => {
-            const res = await axios.get(`http://localhost:5000/tasks/${id}`, { withCredentials: true })
+            const res = await axios.get(`/tasks/${id}`, { withCredentials: true })
             setTasks(res.data)
         }
         getTasks()

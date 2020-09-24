@@ -13,7 +13,7 @@ const Login = () => {
         e.preventDefault()
         const login = async () => {
             try{
-                const res = await axios.post('https://still-shelf-84448.herokuapp.com/login', {
+                const res = await axios.post('/login', {
                     email,
                     password
                 }, { withCredentials: true })

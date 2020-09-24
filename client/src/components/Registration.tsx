@@ -15,7 +15,7 @@ const Registration = () => {
         e.preventDefault()
         const register = async () => {
             try{
-                const res = await axios.post('https://still-shelf-84448.herokuapp.com/register', {
+                const res = await axios.post('/register', {
                     firstName,
                     lastName,
                     email,

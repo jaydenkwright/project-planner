@@ -9,18 +9,18 @@ import NewCard from './NewCard'
 import { useParams } from 'react-router-dom'
 
 export default function Project() {
-    const { id } = useParams()
+    const { id } = useParams<any>()
     const [project, setProject] = useState<ProjectInterface>()
     const [phases, setPhase] = useState<PhaseInterface[]>()
 
     useEffect(() => {
         const getProject = async () => {
-            const res = await axios.get(`http://localhost:5000/project/${id}`, { withCredentials: true })
+            const res = await axios.get(`/project/${id}`, { withCredentials: true })
             setProject(res.data)
         }
         getProject()
         const getPhases = async () => {
-            const res = await axios.get(`http://localhost:5000/phases/${id}`, { withCredentials: true })
+            const res = await axios.get(`/phases/${id}`, { withCredentials: true })
             setPhase(res.data)
         }
         getPhases()

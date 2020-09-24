@@ -7,12 +7,12 @@ import { PhaseInterface } from './Interfaces/PhaseInterface'
 import axios from 'axios'
 
 export const Phase: React.FC = () => {
-    const { id } = useParams()
+    const { id } = useParams<any>()
     const [phase, setPhase] = useState<PhaseInterface>()
 
     useEffect(() => {
         const getPhase = async () => {
-            const res = await axios.get(`http://localhost:5000/phase/${id}`, { withCredentials: true})
+            const res = await axios.get(`/phase/${id}`, { withCredentials: true})
             setPhase(res.data)
         }
         getPhase()
