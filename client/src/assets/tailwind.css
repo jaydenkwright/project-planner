@@ -230,7 +230,10 @@
     }
 
     .columnContainer{
-        @apply w-full mx-auto mb-8
+        @apply w-full mx-auto mb-8;
+    }
+    .homeContainer{
+        @apply flex-col;
     }
 }
 

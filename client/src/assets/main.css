@@ -1074,7 +1074,11 @@ video {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2rem
+    margin-bottom: 2rem;
+  }
+
+  .homeContainer{
+    flex-direction: column;
   }
 }
 
