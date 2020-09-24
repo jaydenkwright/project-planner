@@ -8,7 +8,7 @@ export default function Sidebar() {
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get('http://localhost:5000/user', {
+            const res = await axios.get('https://still-shelf-84448.herokuapp.com/user', {
                 withCredentials: true
             })
             setUser(res.data)

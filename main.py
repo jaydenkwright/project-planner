@@ -6,6 +6,10 @@ import PhaseRoute
 import TaskRoute
 import UserRoute
 
+@app.route('/')
+def index():
+  return app.send_static_file('index.html')
+
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
