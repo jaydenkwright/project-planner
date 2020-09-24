@@ -37,9 +37,7 @@ class Phase(db.Model):
         if len(description) > 200:
             return {"msg": "Max character limit exceeded"}, 401
         return description
-       
-db.create_all()
-print('created') 
+
 
 class PhaseSchema(marsh.Schema):
     class Meta:
