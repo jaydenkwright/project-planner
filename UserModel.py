@@ -47,6 +47,8 @@ class User(db.Model):
             return {"msg": "Password was not provided"}, 401
         return password
 
+db.create_all()
+
 class UserSchema(marsh.Schema):
     class Meta:
         fields = ('id',
