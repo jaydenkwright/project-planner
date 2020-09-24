@@ -43,7 +43,7 @@ def login():
             app.config['SECRET_KEY']
             )
             resp = make_response({"msg": "User successfully loggedin"}, 200)
-            resp.set_cookie('token', token.decode('UTF-8'), httponly = True)
+            resp.set_cookie('token', token.decode('UTF-8'), httponly = True, samesite=True)
             return resp
 
         return {"msg": "Incorrect Password"}, 401
