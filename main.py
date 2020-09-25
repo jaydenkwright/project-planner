@@ -7,12 +7,9 @@ import TaskRoute
 import UserRoute
 
 @app.route('/', defaults={'path': ''})
-def index():
-  return app.send_static_file('index.html')
-
 @app.route('/<path:path>')
 def catch_all(path):
-    return 'fuck'
+    return app.send_static_file('index.html')
 
 @app.after_request
 def after_request(response):
