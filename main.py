@@ -9,7 +9,7 @@ import UserRoute
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    return 'suck'
+    return 'You want path: %s' % path
 
 @app.after_request
 def after_request(response):
