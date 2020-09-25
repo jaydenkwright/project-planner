@@ -6,7 +6,7 @@ import PhaseRoute
 import TaskRoute
 import UserRoute
 
-@app.route('/')
+@app.route('/', defaults={'path': ''})
 def index():
   return app.send_static_file('index.html')
 
