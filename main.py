@@ -10,6 +10,10 @@ import UserRoute
 def index():
   return app.send_static_file('index.html')
 
+@app.route('/<path:path>')
+def catch_all(path):
+    return app.send_static_file('index.html')
+
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
