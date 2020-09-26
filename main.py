@@ -6,20 +6,15 @@ import PhaseRoute
 import TaskRoute
 import UserRoute
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    dir_path = path().absolute()
-    build_folder = dir_path.joinpath("client", "build")
-    if path != "" and os.path.exists(dir_path.joinpath(build_folder, path)):
-        if path.count("/") > 1:
-            [path, filename] = path.rsplit("/", maxsplit=1)
-            return send_from_directory(dir_path.joinpath(build_folder, path), filename)
-        else:
-            filename = path
-            return send_from_directory(dir_path.joinpath(build_folder), filename)
-    else:
-        return render_template("index.html")
+
+@app.route("/")
+def route1():
+    return "route1"
+
+
+@app.route("/<path:path>")
+def home(path):
+    return "routeAny"
 
 @app.after_request
 def after_request(response):
