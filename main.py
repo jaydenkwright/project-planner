@@ -9,6 +9,7 @@ import UserRoute
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
+    dir_path = Path().absolute()
     build_folder = dir_path.joinpath("client", "build")
     if path != "" and os.path.exists(dir_path.joinpath(build_folder, path)):
         if path.count("/") > 1:
