@@ -19,7 +19,7 @@ export const CreatePhase: React.FC = () => {
         e?.preventDefault()
         const createPhase = async () => {
             try{
-                const res = axios.post('/phase/add', {
+                const res = axios.post('/api/phase/add', {
                     projectId,
                     name,
                     phaseNumber: 1,

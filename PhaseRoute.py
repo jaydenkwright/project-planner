@@ -4,7 +4,7 @@ from verify import verify
 from config import db, app
 
 # Create new phase
-@app.route('/phase/add', methods=['POST'])
+@app.route('/api/phase/add', methods=['POST'])
 @verify
 def addPhase(user):
     try:
@@ -26,7 +26,7 @@ def addPhase(user):
         return {"msg": "Something went wrong"}, 500
 
 # Get specific phase
-@app.route('/phase/<id>', methods=['GET'])
+@app.route('/api/phase/<id>', methods=['GET'])
 def getPhase(id):
     try:
         phase = Phase.query.get(id)
@@ -35,7 +35,7 @@ def getPhase(id):
         return {"msg": "Something went wrong"}, 500
 
 # Get all phases from certain project
-@app.route('/phases/<projectId>', methods=['GET'])
+@app.route('/api/phases/<projectId>', methods=['GET'])
 @verify
 def getUserPhases(user, projectId):
     try:
@@ -44,7 +44,7 @@ def getUserPhases(user, projectId):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/phase/update/<id>', methods=['PUT'])
+@app.route('/api/phase/update/<id>', methods=['PUT'])
 @verify
 def updatePhase(user, id):
     try:
@@ -72,7 +72,7 @@ def updatePhase(user, id):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/phase/delete/<id>', methods=['DELETE'])
+@app.route('/api/phase/delete/<id>', methods=['DELETE'])
 @verify
 def deletePhase(user, id):
     try:

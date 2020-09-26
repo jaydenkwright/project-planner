@@ -12,7 +12,7 @@ export const Phase: React.FC = () => {
 
     useEffect(() => {
         const getPhase = async () => {
-            const res = await axios.get(`/phase/${id}`, { withCredentials: true})
+            const res = await axios.get(`/api/phase/${id}`, { withCredentials: true})
             setPhase(res.data)
         }
         getPhase()

@@ -15,12 +15,12 @@ export default function Project() {
 
     useEffect(() => {
         const getProject = async () => {
-            const res = await axios.get(`/project/${id}`, { withCredentials: true })
+            const res = await axios.get(`/api/project/${id}`, { withCredentials: true })
             setProject(res.data)
         }
         getProject()
         const getPhases = async () => {
-            const res = await axios.get(`/phases/${id}`, { withCredentials: true })
+            const res = await axios.get(`/api/phases/${id}`, { withCredentials: true })
             setPhase(res.data)
         }
         getPhases()

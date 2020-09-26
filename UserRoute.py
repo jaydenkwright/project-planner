@@ -7,7 +7,7 @@ import jwt
 from verify import verify
 import datetime
 
-@app.route('/register', methods=['POST'])
+@app.route('/api/register', methods=['POST'])
 def register():
     try:
         userId = str(uuid.uuid4())
@@ -24,7 +24,7 @@ def register():
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     try:
         auth = request.authorization
@@ -51,7 +51,7 @@ def login():
         return {"msg": "Something went wrong"}, 500
     
 
-@app.route('/user', methods=['GET'])
+@app.route('/api/user', methods=['GET'])
 @verify
 def getCurrentUser(currentUser):
     try:
@@ -60,7 +60,7 @@ def getCurrentUser(currentUser):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/user/update', methods=['PUT'])
+@app.route('/api/user/update', methods=['PUT'])
 @verify
 def updateUser(user):
     try:
@@ -82,7 +82,7 @@ def updateUser(user):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/user/<id>', methods=['GET'])
+@app.route('/api/user/<id>', methods=['GET'])
 @verify
 def getUser(user, id):
     try:
@@ -91,7 +91,7 @@ def getUser(user, id):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/isLoggedIn', methods=['GET'])
+@app.route('/api/isLoggedIn', methods=['GET'])
 @verify
 def isLoggedIn(user):
     try:

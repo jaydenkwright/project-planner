@@ -5,7 +5,7 @@ from config import db, app
 
 
 # Create new project
-@app.route('/project/add', methods=['POST'])
+@app.route('/api/project/add', methods=['POST'])
 @verify
 def addProject(user):
     try:
@@ -27,7 +27,7 @@ def addProject(user):
         return {"msg": "Something went wrong"}, 500
 
 # Get all projects created by a certain user
-@app.route('/projects', methods=['GET'])
+@app.route('/api/projects', methods=['GET'])
 @verify
 def getUserProjects(user):
     try:
@@ -37,7 +37,7 @@ def getUserProjects(user):
         return {"msg": "Something went wrong"}, 500
 
 # Get a specific project with a given id
-@app.route('/project/<id>', methods=['GET'])
+@app.route('/api/project/<id>', methods=['GET'])
 def getProject(id):
     try:
         project = Project.query.get(id)
@@ -46,7 +46,7 @@ def getProject(id):
         return {"msg": "Something went wrong"}, 500
 
 # Update a project
-@app.route('/project/update/<id>', methods=['PUT'])
+@app.route('/api/project/update/<id>', methods=['PUT'])
 @verify
 def updateProject(user, id):
     try:
@@ -76,7 +76,7 @@ def updateProject(user, id):
         return {"msg": "Something went wrong"}, 500
 
 # Delete a project
-@app.route('/project/delete/<id>', methods=['DELETE'])
+@app.route('/api/project/delete/<id>', methods=['DELETE'])
 @verify
 def deleteProject(user, id):
     try:

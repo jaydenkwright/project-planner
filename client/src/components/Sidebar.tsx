@@ -8,7 +8,7 @@ export default function Sidebar() {
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get('/user', {
+            const res = await axios.get('/api/user', {
                 withCredentials: true
             })
             setUser(res.data)

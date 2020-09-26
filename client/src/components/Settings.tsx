@@ -30,7 +30,7 @@ const Settings: React.FC = () => {
         e?.preventDefault()
         const updateUser = async () => {
             try{
-                const res = await axios.put('/user/update', {
+                const res = await axios.put('/api/user/update', {
                     firstName: firstName ? firstName : user?.firstName,
                     lastName: lastName ? lastName : user?.lastName,
                     email: email ? email : user?.email,

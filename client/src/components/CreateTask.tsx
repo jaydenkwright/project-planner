@@ -10,7 +10,7 @@ export const CreateTask: React.FC<{ setTasks: React.Dispatch<React.SetStateActio
         e.preventDefault()
         const createTask = async () => {
             try{
-                const res = await axios.post('/task/add', {
+                const res = await axios.post('/api/task/add', {
                     phaseId: id,
                     taskText
                 }, { withCredentials: true})

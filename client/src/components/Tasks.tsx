@@ -16,7 +16,7 @@ export const Tasks = () => {
 
     useEffect(() => {
         const getTasks = async () => {
-            const res = await axios.get(`/tasks/${id}`, { withCredentials: true })
+            const res = await axios.get(`/api/tasks/${id}`, { withCredentials: true })
             setTasks(res.data)
         }
         getTasks()
@@ -46,7 +46,7 @@ export const Tasks = () => {
     }
 
     const updateStage = async () => {
-        const res = await axios.post(`/task/${dragItem.current.id}/${dragItem.current.stage}`, 
+        const res = await axios.post(`/api/task/${dragItem.current.id}/${dragItem.current.stage}`, 
         { withCredentials: true })
     }
 

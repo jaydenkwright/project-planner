@@ -4,7 +4,7 @@ from verify import verify
 from config import db, app
 
 # Create new task
-@app.route('/task/add', methods=['POST'])
+@app.route('/api/task/add', methods=['POST'])
 @verify
 def addTask(user):
     try:
@@ -24,7 +24,7 @@ def addTask(user):
 
 
 # Get specific task
-@app.route('/task/<id>', methods=['GET'])
+@app.route('/api/task/<id>', methods=['GET'])
 def getTask(id):
     try:
         task = Task.query.get(id)
@@ -33,7 +33,7 @@ def getTask(id):
         return {"msg": "Something went wrong"}, 500
 
 # Get all tasks from certain phase
-@app.route('/tasks/<phaseId>', methods=['GET'])
+@app.route('/api/tasks/<phaseId>', methods=['GET'])
 @verify
 def getTasks(user, phaseId):
     try:
@@ -43,7 +43,7 @@ def getTasks(user, phaseId):
         return {"msg": "Something went wrong"}, 500
 
 # Update task
-@app.route('/task/update/<id>', methods=['PUT'])
+@app.route('/api/task/update/<id>', methods=['PUT'])
 @verify
 def updateTask(user, id):
     try:
@@ -63,7 +63,7 @@ def updateTask(user, id):
     except:
         return {"msg": "Something went wrong"}, 500
 
-@app.route('/task/<id>/<stage>', methods=['POST'])
+@app.route('/api/task/<id>/<stage>', methods=['POST'])
 def updateStage(id, stage):
     try:
         task = Task.query.get(id)
@@ -75,7 +75,7 @@ def updateStage(id, stage):
         return {"msg": "Something went wrong"}, 500
 
 # Delete tasks
-@app.route('/task/delete/<id>', methods=['DELETE'])
+@app.route('/api/task/delete/<id>', methods=['DELETE'])
 @verify
 def deleteTask(user, id):
     try:
