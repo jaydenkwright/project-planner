@@ -10,7 +10,7 @@ import UserRoute
 @app.route('/', defaults={'u_path': ''})
 @app.route('/<path:u_path>')
 def catch_all(u_path):
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 @app.after_request
 def after_request(response):
