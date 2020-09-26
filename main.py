@@ -10,7 +10,7 @@ import UserRoute
 @app.route('/', defaults={'u_path': ''})
 @app.route('/<path:u_path>')
 def catch_all(u_path):
-    print(repr(u_path))
+    return u_path
 
 @app.after_request
 def after_request(response):
