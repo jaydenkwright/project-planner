@@ -10,7 +10,11 @@ import UserRoute
 @app.route('/', defaults={'u_path': ''})
 @app.route('/<path:u_path>')
 def catch_all(u_path):
-    return app.send_static_file('./client/build/index.html')
+    path_dir = os.path.abspath("./client/build") #path react build
+     if path != "" and os.path.exists(os.path.join(path_dir, path)):
+         return send_from_directory(os.path.join(path_dir), path)
+     else:
+         return send_from_directory(os.path.join(path_dir),'index.html')
 
 @app.after_request
 def after_request(response):
