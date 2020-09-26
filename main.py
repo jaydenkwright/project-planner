@@ -8,9 +8,9 @@ import TaskRoute
 import UserRoute
 
 
-@app.route('/', defaults={'u_path': ''})
-@app.route('/<path:u_path>')
-def catch_all(u_path):
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
   path_dir = os.path.abspath("./client/build") #path react build
   if path != "" and os.path.exists(os.path.join(path_dir, path)):
       return send_from_directory(os.path.join(path_dir), path)
