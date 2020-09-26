@@ -5,7 +5,7 @@ from settings.settings import DATABASE
 from flask_cors import CORS
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./client/build')
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
