@@ -7,14 +7,10 @@ import TaskRoute
 import UserRoute
 
 
-@app.route("/")
-def route1():
-    return "route1"
-
-
-@app.route("/<path:path>")
-def home(path):
-    return "routeAny"
+@app.route('/', defaults={'u_path': ''})
+@app.route('/<path:u_path>')
+def catch_all(u_path):
+    print(repr(u_path))
 
 @app.after_request
 def after_request(response):
