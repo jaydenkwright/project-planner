@@ -10,6 +10,9 @@ import UserRoute
 def index():
   return app.send_static_file('index.html')
 
+@app.route("/<path:path>")
+def home(path):
+    return "routeAny"
 
 @app.after_request
 def after_request(response):
