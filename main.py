@@ -18,6 +18,10 @@ def catch_all(path):
       print(os.path.join(path_dir))
       return send_from_directory(os.path.join(path_dir),'index.html')
 
+@app.errorhandler(404)   
+def not_found(e):   
+  return app.send_static_file('index.html')
+
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
