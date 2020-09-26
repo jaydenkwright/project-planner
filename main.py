@@ -6,7 +6,7 @@ import PhaseRoute
 import TaskRoute
 import UserRoute
 
-@app.route('/', defaults={'path': ''})
+@app.route('/')
 @app.route('/<path:path>')
 def catch_all(path):
     return 'You want path: %s' % path
