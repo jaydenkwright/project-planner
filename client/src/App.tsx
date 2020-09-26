@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     const isLoggedIn = async () => {
       try{
-        const res = await axios.get('/isLoggedIn', { withCredentials: true })
+        const res = await axios.get('/api/isLoggedIn', { withCredentials: true })
         setLoggedIn(true)
       }catch(err){
         setLoggedIn(false)
