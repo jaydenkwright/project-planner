@@ -937,6 +937,7 @@ video {
   background-color: #f56565;
   background-color: rgba(245, 101, 101, var(--bg-opacity));
   border-radius: 0.5rem;
+  width: 8rem;
   animation: fadeIn .5s ease;
 }
 
