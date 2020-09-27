@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import Error from './Error'
 import UserContext from '../UserContext'
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState<string>('')
@@ -9,6 +10,7 @@ const Login = () => {
     const [error, setError] = useState<string | null>()
     const user = useContext<any>(UserContext)
     const { setLoggedIn } = user
+    const history = useHistory()
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const login = async () => {
@@ -19,6 +21,7 @@ const Login = () => {
                 }, { withCredentials: true })
                 if(res.data){
                     setLoggedIn(true)
+                    history.push('/')
                 }
             }catch(err){
                 setError(err.response.data.msg)
