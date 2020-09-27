@@ -10,8 +10,7 @@ const Home = () => {
     const [error, setError] = useState<string | null>()
     const user = useContext<any>(UserContext)
     const { setLoggedIn } = user
-    const demoLogin = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const demoLogin = () => {
         const login = async () => {
             try{
                 const res = await axios.post('/api/login', {
@@ -45,7 +44,7 @@ const Home = () => {
                         Register
                     </div>
                 </div>
-                <div className='demoBtn text-center' onClick={() => demoLogin}>
+                <div className='demoBtn text-center' onClick={demoLogin}>
                     Demo
                 </div>
             </div>
