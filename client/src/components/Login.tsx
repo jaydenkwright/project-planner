@@ -20,8 +20,8 @@ const Login = () => {
                     password
                 }, { withCredentials: true })
                 if(res.data){
-                    setLoggedIn(true)
                     history.push('/')
+                    setLoggedIn(true)
                 }
             }catch(err){
                 setError(err.response.data.msg)
