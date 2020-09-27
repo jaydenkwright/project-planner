@@ -148,7 +148,7 @@
 }
 
 .errorContainer{
-    @apply text-gray-100 px-1 font-semibold bg-red-500 rounded-lg w-32;
+    @apply text-gray-100 px-1 font-semibold bg-red-500 rounded-lg w-64;
     animation: fadeIn .5s ease;
 }
 
