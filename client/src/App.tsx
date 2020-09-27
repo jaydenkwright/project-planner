@@ -7,8 +7,10 @@ import Project from './components/Project'
 import Phase from './components/Phase'
 import Registration from './components/Registration'
 import Login from './components/Login'
+import RegistrationPage from './components/RegistrationPage'
 import Settings from './components/Settings'
 import Home from './components/Home'
+import LoginPage from './components/LoginPage'
 import axios from 'axios'
 import { UserProvider } from './UserContext'
 import {
@@ -67,10 +69,14 @@ function App() {
         </div>
         : loggedIn === false ? <Router>
             <Switch>
-              <Route path='/'>
+              <Route path='/' exact>
                 <Home />
               </Route>
-              <Route path='/login'>
+              <Route path='/login' exact>
+                <LoginPage />
+              </Route>
+              <Route path='/register' exact>
+                <RegistrationPage />
               </Route>
             </Switch>
           </Router> : 'loading'}

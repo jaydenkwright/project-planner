@@ -202,6 +202,18 @@
     animation: fadeIn 1.5s ease;
 }
 
+.loginRegistration{
+    @apply w-1/3 my-auto;
+}
+
+.loginRegistrationBtn{
+    display: none;
+}
+
+.demoBtn{
+    @apply px-2 py-2 mt-2 mx-2 rounded-lg bg-blue-500 text-white shadow-sm font-semibold w-16;
+}
+
 
 
 @media screen and (max-width: 828px){
@@ -233,7 +245,16 @@
         @apply w-full mx-auto mb-8;
     }
     .homeContainer{
-        @apply flex-col;
+        @apply flex-col pb-64 m-auto items-center;
+    }
+
+    .loginRegistration{
+        display: none;
+    }
+
+    .loginRegistrationBtn{
+        display: inline;
+        @apply px-2 py-2 mt-2 mx-2 rounded-lg bg-green-500 text-white shadow-sm font-semibold;
     }
 }
 

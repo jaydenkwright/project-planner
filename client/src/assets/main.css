@@ -1042,6 +1042,36 @@ video {
   animation: fadeIn 1.5s ease;
 }
 
+.loginRegistration{
+  width: 33.333333%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.loginRegistrationBtn{
+  display: none;
+}
+
+.demoBtn{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  --bg-opacity: 1;
+  background-color: #4299e1;
+  background-color: rgba(66, 153, 225, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  width: 4rem;
+}
+
 @media screen and (max-width: 828px){
   .sidebar{
     display: none;
@@ -1079,6 +1109,33 @@ video {
 
   .homeContainer{
     flex-direction: column;
+    padding-bottom: 16rem;
+    margin: auto;
+    align-items: center;
+  }
+
+  .loginRegistration{
+    display: none;
+  }
+
+  .loginRegistrationBtn{
+    display: inline;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+    --bg-opacity: 1;
+    background-color: #48bb78;
+    background-color: rgba(72, 187, 120, var(--bg-opacity));
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: 600;
   }
 }
 
