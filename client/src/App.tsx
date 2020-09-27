@@ -16,7 +16,8 @@ import { UserProvider } from './UserContext'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
                 <Route path='/settings' exact>
                   <Settings />
                 </Route>
+                <Route path='*'>
+                  <Redirect to="/" />
+                </Route>
               </Switch>
             </div>
           </Router>
@@ -77,6 +81,9 @@ function App() {
               </Route>
               <Route path='/register' exact>
                 <RegistrationPage />
+              </Route>
+              <Route path='*'>
+                <Redirect to="/" />
               </Route>
             </Switch>
           </Router> : 'loading'}
