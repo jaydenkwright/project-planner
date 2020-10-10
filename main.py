@@ -20,8 +20,7 @@ def catch_all(path):
   
 @app.route('/service-worker.js')
 def serve_worker():
-  return send_from_directory('./client/build/', 'service-worker.js')
-  #return app.send_static_file('service-worker.js')
+  return app.send_static_file('service-worker.js')
 
 @app.errorhandler(404)   
 def not_found(e):   
