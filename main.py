@@ -17,6 +17,10 @@ def catch_all(path):
   else:
       print(os.path.join(path_dir))
       return send_from_directory(os.path.join(path_dir),'index.html')
+  
+@static.route('/service-worker.js')
+def serve_worker():
+    return send_from_directory('./client/build/', 'service-worker.js')
 
 @app.errorhandler(404)   
 def not_found(e):   
