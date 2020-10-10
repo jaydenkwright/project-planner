@@ -4,6 +4,7 @@ import Registration from './Registration'
 import UserContext from '../UserContext'
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
+import Helmet from 'react-helmet';
 
 const Home = () => {
     const history = useHistory()
@@ -29,6 +30,9 @@ const Home = () => {
     }
     return (
         <div className='homeContainer'>
+            <Helmet>
+                <title>Plan Your Next Project.</title>
+            </Helmet>
             <div className='w-2/3 my-auto p-16'>
                 <div className='homeTitle'>
                     Plan Your Next Project.

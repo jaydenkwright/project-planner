@@ -3,6 +3,7 @@ import axios from 'axios'
 import Error from './Error'
 import UserContext from '../UserContext'
 import { useHistory } from "react-router-dom";
+import Helmet from 'react-helmet';
 
 const Login = () => {
     const [email, setEmail] = useState<string>('')
@@ -31,6 +32,9 @@ const Login = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             { error ? <Error error={error}/> : null}
             <form onSubmit={submit}>
                 <label className='textboxLabel'>Email</label>

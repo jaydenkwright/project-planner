@@ -5,6 +5,7 @@ import Error from './Error'
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 import { useParams } from 'react-router-dom'
+import Helmet from 'react-helmet';
 
 export const CreatePhase: React.FC = () => {
     const history = useHistory()
@@ -40,6 +41,9 @@ export const CreatePhase: React.FC = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Create a new phase</title>
+            </Helmet>
             <Header title='Create'/>
             <Layout>
                 <div className='mx-auto py-16'>

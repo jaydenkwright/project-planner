@@ -20,7 +20,7 @@ export const Projects: React.FC =() => {
     return (
         <div className="">
             <Helmet>
-                <title>Test</title>
+                <title>Projects</title>
             </Helmet>
             <Header title="Projects"/>
             <Layout>

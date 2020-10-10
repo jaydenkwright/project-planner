@@ -5,6 +5,8 @@ import Tasks from './Tasks'
 import { useParams } from 'react-router-dom'
 import { PhaseInterface } from './Interfaces/PhaseInterface'
 import axios from 'axios'
+import Helmet from 'react-helmet';
+
 
 export const Phase: React.FC = () => {
     const { id } = useParams<any>()
@@ -21,6 +23,9 @@ export const Phase: React.FC = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>{phase ? phase.name : 'Project Planner'}</title>
+            </Helmet>
             <Header title={phase ? phase.name : ''} description={phase ? phase.description : ''}/>
             <Layout>
                 <Tasks />

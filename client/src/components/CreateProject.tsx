@@ -4,6 +4,7 @@ import Layout from './Layout'
 import Error from './Error'
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
+import Helmet from 'react-helmet';
 
 const CreateProject: React.FC = () => {
     const [name, setName] = useState('')
@@ -39,6 +40,9 @@ const CreateProject: React.FC = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Create a new project</title>
+            </Helmet>
            <Header title='Create'/> 
             <Layout>
                 <div className='mx-auto py-16'>

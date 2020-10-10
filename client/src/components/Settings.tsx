@@ -5,6 +5,7 @@ import Header from './Header'
 import Layout from './Layout'
 import Error from './Error'
 import axios from 'axios'
+import Helmet from 'react-helmet';
 
 const Settings: React.FC = () => {
     const history = useHistory()
@@ -49,6 +50,9 @@ const Settings: React.FC = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Settings</title>
+            </Helmet>
             <Header title='Settings' />
             <Layout>
                 <div className='mx-auto py-16'>

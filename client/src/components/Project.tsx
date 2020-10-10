@@ -7,6 +7,7 @@ import Header from './Header'
 import PhaseCard from './PhaseCard'
 import NewCard from './NewCard'
 import { useParams } from 'react-router-dom'
+import Helmet from 'react-helmet';
 
 export default function Project() {
     const { id } = useParams<any>()
@@ -27,6 +28,9 @@ export default function Project() {
     }, [])
     return (
         <div>
+            <Helmet>
+                <title>{project ? project.name : 'Project Planner'}</title>
+            </Helmet>
             <Header title={project ? project.name : ''} description={project ? project.description : ''}/>
             <Layout>
                 {phases ? 
