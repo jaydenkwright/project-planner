@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Error from './Error'
 import { useHistory } from "react-router-dom";
-import Helmet from 'react-helmet';
 
 const Registration = () => {
     const [firstName, setFirstName] = useState<string>('')
@@ -34,9 +33,6 @@ const Registration = () => {
 
     return (
         <div>
-            <Helmet>
-                <title>Register</title>
-            </Helmet>
             { error ? <Error error={error}/> : null}
             <form onSubmit={submit}>
                 <div className='flex'>
