@@ -5,6 +5,7 @@ import NewCard from './NewCard'
 import { ProjectInterface, init } from './Interfaces/ProjectInterface'
 import Layout from './Layout'
 import axios from 'axios'
+import Helmet from 'react-helmet';
 
 export const Projects: React.FC =() => {
     const [projects, setProjects] = useState<ProjectInterface[]>(init)
@@ -18,6 +19,9 @@ export const Projects: React.FC =() => {
     }, [])
     return (
         <div className="">
+            <Helmet>
+                <title>Test</title>
+            </Helmet>
             <Header title="Projects"/>
             <Layout>
                 {projects.map((project) => (
