@@ -65,7 +65,9 @@ To get a local copy up and running follow these simple steps.
    cd client
    npm run start
    ```
+
    
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
